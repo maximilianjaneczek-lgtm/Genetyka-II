@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>SKRYPT MAXA: Genetyka Kliniczna II</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,9 +89,6 @@
         tr:nth-child(even) td { background-color: #f8fafc; }
         tr:hover td { background-color: #f1f5f9; }
 
-        /* MEDICAL GRAPHICS VECTOR CONTAINER */
-        .medical-vector { background-color: #f0fdf4; border: 1px dashed #bbf7d0; padding: 20px; border-radius: var(--border-radius); text-align: center; margin: 20px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #166534; font-size: 14px; font-weight: 500; }
-
         /* 3D FLASHCARDS WITH ACTIVE EVALUATION */
         .flashcard-wrapper { perspective: 1200px; width: 100%; max-width: 700px; height: 420px; margin: 30px auto; }
         .flashcard { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
@@ -104,7 +101,7 @@
         .card-back h4 { font-family: 'Poppins', sans-serif; font-size: 16px; color: var(--color-secondary); margin-bottom: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
         .card-back p, .card-back div { font-size: 14.5px; line-height: 1.6; color: var(--text-main); font-weight: 500; width: 100%; }
         .flashcard-controls { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
-        .btn-flash { padding: 12px 24px; border-radius: 8px; border: none; background-color: var(--sidebar-bg); color: white; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .btn-flash { padding: 12px 24px; border-radius: 8px; border: none; background-color: var(--sidebar-bg); color: white; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer; }
         .btn-flash:hover { background-color: var(--color-secondary); transform: translateY(-1px); }
         .btn-flash.flip { background-color: var(--color-accent); }
         .btn-flash.flip:hover { background-color: #b45309; }
@@ -122,14 +119,14 @@
         .quiz-card.answered-wrong { border-left-color: var(--color-danger); }
         .quiz-q-title { font-family: 'Poppins', sans-serif; font-size: 17px; font-weight: 600; color: var(--text-dark); margin-bottom: 20px; line-height: 1.5; }
         .quiz-options-list { display: flex; flex-direction: column; gap: 12px; list-style: none; }
-        .quiz-option { padding: 14px 18px; border: 1px solid #cbd5e1; border-radius: 8px; cursor: pointer; font-size: 14.5px; font-weight: 500; transition: var(--transition); background-color: #f8fafc; color: var(--text-main); line-height: 1.4; }
+        .quiz-option { padding: 14px 18px; border: 1px solid #cbd5e1; border-radius: 8px; cursor: pointer; font-size: 14.5px; font-weight: 500; transition: var(--transition); background-color: #fff; }
         .quiz-option:hover { background-color: #f1f5f9; border-color: #94a3b8; }
         .quiz-option.correct { background-color: #d1fae5 !important; border-color: var(--color-success) !important; color: #065f46 !important; font-weight: 700; }
         .quiz-option.wrong { background-color: #ffe4e6 !important; border-color: var(--color-danger) !important; color: #991b1b !important; font-weight: 700; }
         .quiz-rationale { margin-top: 15px; padding: 15px; background-color: #f0fdf4; border-radius: 8px; border: 1px dashed #bbf7d0; font-size: 14px; line-height: 1.5; color: #166534; display: none; }
         .quiz-rationale.visible { display: block; }
         .quiz-rationale.wrong-rationale { background-color: #fef2f2; border-color: #fecaca; color: #991b1b; }
-        .exam-score-banner { background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%); color: white; padding: 25px; border-radius: var(--border-radius); text-align: center; font-family: 'Poppins', sans-serif; margin-bottom: 30px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+        .exam-score-banner { background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%); color: white; padding: 25px; border-radius: var(--border-radius); text-align: center; font-family: 'Poppins', sans-serif; }
         .exam-score-banner h2 { font-size: 24px; margin-bottom: 10px; font-weight: 700; }
         .exam-score-banner p { font-size: 16px; font-family: 'Roboto Mono', monospace; font-weight: bold; }
 
@@ -313,15 +310,6 @@
                         <li><i class="fa-solid fa-angles-right"></i><span class="bullet-bold">Dysmorfia twarzy i ciała:</span> Niski wzrost ciała, mała głowa, włosy gładkie, rzadkie i proste. Twarz okrągła i płaska. Skośne szpary powiekowe, <strong>zmarszczka nakątna (fałd nakątny)</strong> oraz jasne plamki Brushfielda na tęczówce. Nos mały, krótki, płaski. Uszy małe, nisko osadzone. Usta grube, popękane, wywinięta warga dolna; język duży i wystający (<strong>makroglosja</strong>); podniebienie gotyckie. Szyja krótka z fałdem skórnym. Obniżone napięcie mięśniowe (<strong>hipotonia</strong>). Dłonie szerokie, krótka dłoń, <strong>bruzda dłoniowa (pojedyncza)</strong> oraz <strong>bruzda sandałowa</strong>. Płaskostopie, marmurkowata skóra. Wada serca – <strong>wspólny kanał przedsionkowo-komorowy (AVSD)</strong>.</li>
                     </ul>
                 </div>
-                <div class="medical-vector">
-                    <svg width="120" height="60" viewBox="0 0 100 50" role="img" aria-label="Schemat Trisomia 21">
-                        <circle cx="25" cy="25" r="8" fill="#1e3a8a"/>
-                        <circle cx="45" cy="25" r="8" fill="#1e3a8a"/>
-                        <circle cx="65" cy="25" r="8" fill="#be123c"/>
-                        <text x="45" y="45" font-size="10" font-family="sans-serif" text-anchor="middle" fill="#334155">Trisomia 21 (Aneuploidia)</text>
-                    </svg>
-                    <span>Schemat wolnej trisomii chromosomalnej (nondysjunkcja)</span>
-                </div>
 
                 <div class="hy-card danger">
                     <span class="card-badge badge-chrom">Trisomia 18 / 13</span>
@@ -352,16 +340,6 @@
                         <li><i class="fa-solid fa-baby"></i><span class="bullet-bold">Obraz Kliniczny:</span> Cechuje się <strong>makrosomią</strong>, <strong>makroglosją</strong> (olbrzymi język), wady ściany brzucha – <strong>omphalocele (przepuklina pępowinowa)</strong> lub przepuklina pępkowa, oraz <strong>hemihipertrofią</strong> (asymetryczny przerost połowy ciała). Występuje ciężka <strong>hipoglikemia noworodkowa</strong>.</li>
                         <li><i class="fa-solid fa-shield-virus"></i><span class="bullet-bold">Nadzór Onkologiczny:</span> Ekstremalnie wysokie ryzyko rozwoju nowotworów wieku dziecięcego: <strong>guza Wilmsa</strong> oraz <strong>hepatoblastoma</strong>. Obowiązuje profilaktyczne <strong>USG jamy brzusznej co 3 miesiące</strong>.</li>
                     </ul>
-                </div>
-                <div class="medical-vector">
-                    <svg width="150" height="50" viewBox="0 0 150 50" role="img" aria-label="Schemat imprintingu IGF2">
-                        <rect x="10" y="15" width="50" height="20" rx="4" fill="#cbd5e1"/>
-                        <rect x="80" y="15" width="50" height="20" rx="4" fill="#0d9488"/>
-                        <text x="35" y="27" font-size="10" font-family="sans-serif" text-anchor="middle" fill="#334155">Matczyny (OFF)</text>
-                        <text x="105" y="27" font-size="10" font-family="sans-serif" text-anchor="middle" fill="#fff">Ojcowski (ON)</text>
-                        <text x="75" y="45" font-size="9" font-family="sans-serif" text-anchor="middle" fill="#64748b">Metylacja i Imprinting (Locus IGF2)</text>
-                    </svg>
-                    <span>Schemat ekspresji monoallelicznej (piętnowanie rodzicielskie)</span>
                 </div>
 
                 <div class="hy-card accent">
@@ -549,17 +527,8 @@
                     <ul>
                         <li><i class="fa-solid fa-microchip"></i><span class="bullet-bold">NGS i sekwencjonowanie całoeksomowe (WES):</span> WES sekwencjonuje eksony kodujące. <strong>Sekwencjonowanie całoeksomowe (WES) NIE wykryje mutacji dynamicznej</strong> (ekspansji powtórzeń mikrosatelitarnych), dużej delecji ani delecji subtelomerowej. Ujemny wynik badania nie wyklucza w 100% podłoża genetycznego.</li>
                         <li><i class="fa-solid fa-server"></i><span class="bullet-bold">Metoda GWAS i Mikromacierze:</span> Badania asocjacyjne w całym genomie (<strong>GWAS</strong>) polegają na <strong>porównywaniu częstości wariantów SNP (polimorfizmów pojedynczego nukleotydu) między grupą chorych i kontrolną</strong>. Ryzyko choroby wieloczynnikowej w rodzinie <strong>wzrasta, jeśli więcej członków rodziny jest dotkniętych chorobą</strong>. Hybrydyzacja do mikromacierzy ma zastosowanie w wykrywaniu SNP.</li>
-                        <li><i class="fa-solid fa-dna"></i><span class="bullet-bold">Techniki Cytogenetyczne (aCGH, FISH, MLPA):</span> Metoda <strong>aCGH (mikromacierz)</strong> wykrywa submikroskopowe zmiany ilościowe (CNV). Technika <strong>FISH</strong> polega na tym, że <strong>zdenaturowane chromosomy metafazalne, profazalne lub jądra interfazowe ulegają ekspozycji na wyznakowane jednoniciowe odcinki DNA (sondy)</strong>. Służy do wykrywania delecji oraz aneuploidii. Metoda <strong>MLPA</strong> służy do ilościowej oceny eksonów.</li>
+                        <li><i class="fa-solid fa-dna"></i><span class="bullet-bold">Techniki Cytogenetyczne (aCGH, FISH, MLPA):</span> Metoda <strong>aCGH (mikromacierz)</strong> wykrywa submikroskopowe zmiany ilościowe (CNV). Technika <strong>FISH</strong> polega na hybrydyzacji z sondami fluorescencyjnymi i służy do wykrywania delecji oraz aneuploidii. Metoda <strong>MLPA</strong> służy do ilościowej oceny eksonów.</li>
                     </ul>
-                </div>
-                <div class="medical-vector">
-                    <svg width="200" height="60" viewBox="0 0 200 60" role="img" aria-label="Schemat hybrydyzacji FISH">
-                        <line x1="10" y1="20" x2="190" y2="20" stroke="#334155" stroke-width="2"/>
-                        <line x1="50" y1="40" x2="100" y2="40" stroke="#be123c" stroke-width="3"/>
-                        <text x="75" y="52" font-size="9" font-family="sans-serif" text-anchor="middle" fill="#be123c">Fluorescencyjna Sonda FISH</text>
-                        <text x="100" y="12" font-size="9" font-family="sans-serif" text-anchor="middle" fill="#334155">Denaturyzowane DNA Jądrowe (Hybrydyzacja)</text>
-                    </svg>
-                    <span>Schemat hybrydyzacji sondy fluorescencyjnej w technice FISH</span>
                 </div>
 
                 <div class="hy-card secondary">
@@ -804,14 +773,13 @@
                 <p id="examScoreText">Udzielono odpowiedzi na: 0 / 59 pytań (Skuteczność: 0%)</p>
             </div>
 
-            <div class="exam-container" id="quizContainerElement">
-                </div>
+            <div class="exam-container" id="quizContainerElement"></div>
         </div>
 
     </div>
 
     <script>
-        /* --------- UI: taby, filtr, flashcards/exam engines (przeniesione i zintegrowane) --------- */
+        /* --------- UI: taby, filtr, flashcards/exam engines (pełne implementacje) --------- */
 
         function switchTab(tabId) {
             document.querySelectorAll('.content-tab').forEach(tab => tab.classList.remove('active'));
@@ -864,7 +832,7 @@
             }
         }
 
-        // --- FULL 59 QUESTIONS EXAM DATABASE FROM EXAM.DOCX ---
+        // --- FULL 59 QUESTIONS EXAM DATABASE ---
         const examQuestionsBaza = [
             { q: "Wymiana materiału genetycznego między chromosomami homologicznymi (crossing-over) zachodzi w mejozie podczas:", opts: ["profazy I", "metafazy I", "anafazy I", "metafazy II", "anafazy II"], corr: 0, rationale: "Crossing-over zachodzi wyłącznie w pachytenie profazy I mejozy, kiedy sparowane chromosomy homologiczne tworzą biwalenty i wymieniają odcinki chromatyd niesiostrzanych." },
             { q: "Wśród substytucji pojedynczej pary zasad zmieniających sekwencję kodowanych aminokwasów można wyróżnić mutacje, które:", opts: ["Zmieniają jeden aminokwas na inny", "Wprowadzają jeden z trzech kodonów stop do mRNA", "Zmieniają ramkę odczytu", "Prawidłowe opcje A i B", "Prawidłowe opcje A, B i C"], corr: 3, rationale: "Substytucje punktowe obejmują mutacje zmiany sensu (missense) oraz mutacje nonsensowne, które wprowadzają kodon STOP. Mutacje zmiany ramki odczytu (frameshift) wynikają z insercji lub delecji, a nie z prostych substytucji pojedynczych par zasad." },
@@ -892,10 +860,10 @@
             { q: "Który zespół jest wynikiem zaburzeń imprintingu genomowego?", opts: ["Pradera-Willego", "Williamsa", "Downa", "Klinefeltera", "cri du chat"], corr: 0, rationale: "Zespół Pradera-Willego (oraz zespół Angelmana) wynikają bezpośrednio z zaburzeń epigenetycznych i utraty ekspresji genów podlegających imprintingowi w regionie 15q11-q13." },
             { q: "Jeżeli pacjent urodził się z chorobą genetyczną, która nie występowała wcześniej w rodzinie, możliwe, że chorobę spowodowała nowa mutacja (mutacja de novo). Wybierz zestaw prawdziwy: (1. Allele w tym locus w innych komórkach linii płciowej rodzica będą prawidłowe; 3. Ryzyko genetyczne dla rodzeństwa pacjenta jest małe; 6. Ryzyko genetyczne dla potomstwa pacjenta będzie istotnie podwyższone):", opts: ["1,3,5", "1,3,6", "1,4,5", "2,3,5", "2,4,6"], corr: 1, rationale: "Przy mutacji de novo w pojedynczej gamecie, pozostałe oocyty/plemniki rodziców są prawidłowe (ryzyko dla rodzeństwa małe). Pacjent jednak posiada mutację konstytucyjną i przekaże ją potomstwu z ryzykiem 50%." },
             { q: "Choroby spowodowane zmianami obecnymi w genomie mitochondrialnym:", opts: ["wykazują nietypowy model dziedziczenia i dużą zmienność fenotypową", "wykazują typowy model dziedziczenia i dużą zmienność fenotypową", "wykazują nietypowy model dziedziczenia i małą zmienność fenotypową", "wykazują typowy model dziedziczenia i zmienność fenotypową", "żadne z powyższych"], corr: 0, rationale: "Mutacje w mtDNA dziedziczą się wyłącznie po matce (dziedziczenie matczyne). Cechują się zmienną ekspresją u potomstwa ze względu na zjawisko heteroplazmii." },
-            { q: "Która z poniższych chorób nie jest dziedziczona w sposób recesywny sprzężony z chromosomem X?", opts: ["hemofilia A", "dystrofia mięśniowa Duchenne’a", "mukowiscydoza", "ślepota na barwy czerwoną i zieloną", "wszystkie wymienione są dziedziczone w sposób recesywny sprzężony z chromosomem X"], corr: 2, rationale: "Mukowiscydoza (CF) jest klasyczną chorobą uwarunkowaną autosomalnie recesywnie (AR), zlokalizowaną na chromosomie 7." },
+            { q: "Która z poniższych chorób nie jest dziedziczona w sposób recesywny sprzężony z chromosomem X?", opts: ["hemofilia A", "dystrofia mięśniowa Duchenne’a", "mukowiscydoza", "ślepota na barwy czerwoną i zieloną", "wszystkie wymienione są dziedziczone w sposób receswny sprzężone z chromosomem X"], corr: 2, rationale: "Mukowiscydoza (CF) jest klasyczną chorobą uwarunkowaną autosomalnie recesywnie (AR), zlokalizowaną na chromosomie 7." },
             { q: "Z ekspansją powtórzeń ma związek:", opts: ["dystrofia mięśniowa Duchenne’a", "dystrofia mięśniowa Beckera", "zespół Marfana", "choroba Huntingtona", "choroba von Recklinghausena"], corr: 3, rationale: "Choroba Huntingtona (HD) wywołana jest ekspansją powtórzeń tripletów CAG (>36) w genie HTT kodującym huntingtynę, co prowadzi do jej neurotoksyczności i obumierania neuronów." },
             { q: "Premutacja:", opts: ["może rozszerzyć się w kolejnym pokoleniu po pełnej mutacji", "osoby z premutacją mogą nie mieć objawów choroby", "to zmniejszona liczba powtórzeń określonego fragmentu DNA", "polega na zmianie jednego nukleotydu", "prawidłowe A i B"], corr: 4, rationale: "Premutacja to stan pośredni liczby powtórzeń. Nosiciele są zazwyczaj zdrowi, ale sekwencja jest niestabilna i może ulec pełnej ekspansji podczas gametogenezy." },
-            { q: "W siatkówczaku dziedzicznym wybierz zestaw prawdziwy: (1. Choroba ujawnia się zwykle we wczesnym dzieciństwie; 2. Mutacja germinalna dotyczy genu RB1; 4. Często występuje postać obustronna):", opts: ["1,2,4", "2,3,5", "1,3,4", "1,2,3", "3,4,5"], corr: 0, rationale: "Siatkówczak dziedziczny wynika z mutacji germinalnej genu RB1. Cechuje się wczesnym początkiem w wieku dziecięcym oraz skłonnością do zmian wieloogniskowych i obustronnych (hipoteza Knudsona)." },
+            { q: "W siatkówczaku dziedzicznym wybierz zestaw prawdziwy: (1. Choroba ujawnia się zwykle we wczesnym dzieciństwie; 2. Mutacja germinalna dotyczy genu RB1; 4. Często występuje postać obustronna):", opts: ["1,2,4", "2,3,5", "1,3,4", "1,2,3", "3,4,5"], corr: 0, rationale: "Siatkówczak dziedziczony wynika z mutacji germinalnej genu RB1. Cechuje się wczesnym początkiem w wieku dziecięcym oraz skłonnością do zmian wieloogniskowych i obustronnych (hipoteza Knudsona)." },
             { q: "W sekwencji DNA zaszła zmiana nukleotydu, adenina (A) została zastąpiona przez cytozynę (C). Jakiego rodzaju mutacja miała miejsce?", opts: ["transwersja", "tranzycja", "inwersja", "delecja", "insercja"], corr: 0, rationale: "Zamiana zasady purynowej (A) na pirymidynową (C) (lub odwrotnie) to definicyjnie transwersja." },
             { q: "Paradoks Shermana odnosi się do zjawiska:", opts: ["delecji genu na chromosomie X", "losowej inaktywacji chromosomu X", "ekspansji niestabilnych powtórzeń trinukleotydowych w kolejnych pokoleniach", "mutacji punktowych o stałej częstości", "zaburzeń imprintingu genomowego"], corr: 2, rationale: "Paradoks Shermana opisuje nietypowy rozkład ryzyka zachorowania potomstwa we FRAXA, co doprowadziło do odkrycia mutacji dynamicznych i progresywnego wydłużania się powtórzeń tripletów w kolejnych pokoleniach." },
             { q: "Kraniosynostoza to:", opts: ["wrodzony brak części kości czaszki", "przedwczesne zarośnięcie szwów czaszki", "zaburzenie kostnienia kości długich", "nowotworowe rozrosty kości czaszki", "wtórna deformacja czaszki po urazie"], corr: 1, rationale: "Kraniosynostoza to stan patologiczny polegający na przedwczesnym zrastaniu się szwów czaszkowych, co ogranicza rozwój mózgowia i deformuje czaszkę (np. w zespole Crouzona)." },
@@ -931,6 +899,7 @@
 
         function compileExamSystem() {
             const container = document.getElementById('quizContainerElement');
+            if(!container) return;
             container.innerHTML = ""; 
 
             examQuestionsBaza.forEach((qObj, qIdx) => {
@@ -968,8 +937,7 @@
         }
 
         function evaluateUserQuizSelection(qIdx, selectedIdx) {
-            if (examUserAnswers[qIdx] !== null) return; 
-
+            if (examUserAnswers[qIdx] !== null) return; // jednorazowy wybór
             examUserAnswers[qIdx] = selectedIdx;
             const qObj = examQuestionsBaza[qIdx];
             const card = document.getElementById(`qCard_${qIdx}`);
@@ -991,8 +959,7 @@
             } else {
                 card.classList.add('answered-wrong');
                 rationaleBox.innerHTML = `<strong><i class="fa-solid fa-circle-xmark"></i> Błąd! Komentarz akademicki:</strong><br>${qObj.rationale}`;
-                rationaleBox.classList.add('visible');
-                rationaleBox.classList.add('wrong-rationale');
+                rationaleBox.classList.add('visible', 'wrong-rationale');
             }
 
             updateExamScoreBanner();
@@ -1003,7 +970,9 @@
             let correctCount = examUserAnswers.filter((ans, idx) => ans !== null && ans === examQuestionsBaza[idx].corr).length;
             let percent = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
 
-            document.getElementById('examScoreText').innerText = `Udzielono odpowiedzi na: ${answeredCount} / ${examQuestionsBaza.length} pytań (Aktualna skuteczność: ${percent}%)`;
+            const text = `Udzielono odpowiedzi na: ${answeredCount} / ${examQuestionsBaza.length} pytań (Aktualna skuteczność: ${percent}%)`;
+            const el = document.getElementById('examScoreText');
+            if(el) el.innerText = text;
         }
 
         // --- DYNAMIC AUTOMATIC FLASHCARDS SCRAPING ENGINE ---
@@ -1040,12 +1009,13 @@
             });
 
             cardMasteredStates = new Array(flashcardsData.length).fill(null);
+            currentCardIndex = 0;
             updateFlashcardUI();
         }
 
         function updateFlashcardUI() {
             const cardEl = document.getElementById('cardElement');
-            cardEl.classList.remove('flipped');
+            if(cardEl) cardEl.classList.remove('flipped');
 
             let mastered = cardMasteredStates.filter(s => s === true).length;
             let failed = cardMasteredStates.filter(s => s === false).length;
@@ -1069,7 +1039,7 @@
             }, 120);
         }
 
-        function flipCard() { document.getElementById('cardElement').classList.toggle('flipped'); }
+        function flipCard() { const el=document.getElementById('cardElement'); if(el) el.classList.toggle('flipped'); }
         function nextCard() { if(flashcardsData.length===0) return; currentCardIndex = (currentCardIndex + 1) % flashcardsData.length; updateFlashcardUI(); }
         function prevCard() { if(flashcardsData.length===0) return; currentCardIndex = (currentCardIndex - 1 + flashcardsData.length) % flashcardsData.length; updateFlashcardUI(); }
         
@@ -1080,17 +1050,17 @@
         }
 
         function resetFlashcards() {
-            cardMasteredStates.fill(null);
+            cardMasteredStates = new Array(flashcardsData.length).fill(null);
             currentCardIndex = 0;
             updateFlashcardUI();
         }
 
         window.onload = function() {
-            compileDynamicFlashcards();
-            compileExamSystem();
+            try { compileDynamicFlashcards(); } catch(e) { console.error(e); }
+            try { compileExamSystem(); } catch(e) { console.error(e); }
         };
 
-        // Rejestracja Service Workera (pliku /sw.js w root serwera)
+        // Rejestracja Service Workera (pliku /sw.js w root serwera) — opcjonalnie
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/sw.js').then(reg => {
