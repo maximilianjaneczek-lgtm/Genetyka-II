@@ -22,17 +22,18 @@
             --color-danger: #be123c;
             --color-warning: #e11d48;
             --color-success: #10b981;
+            --border-radius: 12px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--primary-bg); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--content-bg); color: var(--text-main); display: flex; min-height: 100vh; overflow: hidden; }
 
         /* SIDEBAR */
-        .sidebar { width: 320px; background-color: var(--sidebar-bg); display: flex; flex-direction: column; border-right: 1px solid #334155; z-index: 10; }
+        .sidebar { width: 340px; background-color: var(--sidebar-bg); display: flex; flex-direction: column; border-right: 1px solid #334155; height: 100vh; flex-shrink: 0; position: fixed; left: 0; top: 0; bottom: 0; }
         .sidebar-header { padding: 24px; background: linear-gradient(135deg, #1e3a8a, #0d9488); color: white; text-align: center; }
         .sidebar-header h2 { font-family: 'Rubik', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 1px; }
-        .sidebar-header p { font-size: 11px; opacity: 0.8; margin-top: 4px; font-weight: 500; }
-        .search-box { padding: 15px; background-color: #111827; position: relative; }
+        .sidebar-header p { font-size: 11px; opacity: 0.8; margin-top: 4px; font-weight: 500; text-transform: uppercase; }
+        .search-box { padding: 15px; background-color: #0f172a; position: relative; }
         .search-box input { width: 100%; padding: 10px 35px 10px 15px; border-radius: 8px; border: 1px solid #4b5563; background-color: #1f2937; color: white; font-size: 13px; outline: none; }
         .search-box i { position: absolute; right: 25px; top: 28px; color: #9ca3af; }
         .nav-menu { flex: 1; overflow-y: auto; padding: 15px 10px; display: flex; flex-direction: column; gap: 4px; }
@@ -41,88 +42,81 @@
         .nav-item.active { background: linear-gradient(90deg, #0d9488, #0f766e); color: white; font-weight: 600; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2); }
         .nav-item i { width: 20px; text-align: center; font-size: 16px; }
 
-        /* MAIN CONTENT */
-        .main-content { flex: 1; background-color: var(--content-bg); display: flex; flex-direction: column; overflow: hidden; position: relative; }
-        .content-tab { display: none; flex: 1; overflow-y: auto; padding: 40px; }
+        /* MAIN CONTENT ROW */
+        .main-content { flex: 1; margin-left: 340px; background-color: var(--content-bg); height: 100vh; overflow-y: auto; display: flex; flex-direction: column; position: relative; }
+        .content-tab { display: none; padding: 40px; width: 100%; }
         .content-tab.active { display: block; }
 
-        /* MODULE HEADER */
-        .module-header { background-color: white; padding: 30px; border-radius: 16px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border-left: 6px solid var(--color-primary); }
-        .module-header h1 { font-family: 'Rubik', sans-serif; color: var(--text-dark); font-size: 26px; font-weight: 700; margin-bottom: 8px; }
-        .module-header p { font-size: 14px; color: #64748b; }
-
-        /* SECTION TITLES */
+        /* MODULE DESIGN GRID */
+        .module-header { background-color: white; padding: 30px; border-radius: 16px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border-left: 6px solid var(--color-primary); }
+        .module-header h1 { font-family: 'Rubik', sans-serif; color: var(--text-dark); font-size: 26px; font-weight: 700; }
+        .module-header p { font-size: 14px; color: #64748b; margin-top: 4px; }
         .section-title { font-family: 'Rubik', sans-serif; font-size: 18px; font-weight: 700; color: var(--text-dark); margin: 35px 0 20px 0; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
         .section-title i { color: var(--color-secondary); }
 
-        /* CARDS & GRID */
-        .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1xl)); gap: 25px; margin-bottom: 30px; }
-        .hy-card { background-color: white; border-radius: 14px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; position: relative; transition: transform 0.2s, box-shadow 0.2s; }
-        .hy-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 25px; margin-bottom: 30px; width: 100%; }
+        .hy-card { background-color: white; border-radius: 14px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.01); border: 1px solid #e2e8f0; position: relative; transition: transform 0.2s; }
+        .hy-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.04); }
         .hy-card.primary { border-top: 4px solid var(--color-primary); }
         .hy-card.secondary { border-top: 4px solid var(--color-secondary); }
         .hy-card.accent { border-top: 4px solid var(--color-accent); }
         .hy-card.warning { border-top: 4px solid var(--color-warning); }
         .hy-card.danger { border-top: 4px solid var(--color-danger); }
-        .hy-card h4 { font-family: 'Rubik', sans-serif; font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 15px; padding-right: 80px; }
-        .hy-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        
+        .hy-card h4 { font-family: 'Rubik', sans-serif; font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 15px; }
+        .hy-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
         .hy-card li { font-size: 13.5px; line-height: 1.6; display: flex; gap: 10px; align-items: flex-start; }
-        .hy-card li i { color: var(--color-secondary); margin-top: 4px; font-size: 14px; flex-shrink: 0; }
-        .bullet-bold { font-weight: 600; color: var(--text-dark); margin-right: 4px; }
+        .hy-card li i { color: var(--color-secondary); margin-top: 4px; font-size: 13px; flex-shrink: 0; }
+        .bullet-bold { font-weight: 600; color: var(--text-dark); }
         .card-badge { position: absolute; top: 22px; right: 25px; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
         .badge-ad { background-color: #eff6ff; color: #1e40af; }
         .badge-ar { background-color: #f0fdf4; color: #166534; }
         .badge-xr { background-color: #fff1f2; color: #9f1239; }
-        .badge-mito { background-color: #faf5ff; color: #6b21a8; }
 
         /* TABLES */
-        .table-container { background-color: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); overflow: hidden; border: 1px solid #e2e8f0; margin-bottom: 30px; }
-        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13.5px; }
-        th { background-color: #f8fafc; padding: 18px 20px; font-weight: 700; color: var(--text-dark); border-bottom: 2px solid #e2e8f0; font-family: 'Rubik', sans-serif; }
-        td { padding: 18px 20px; border-bottom: 1px solid #e2e8f0; line-height: 1.6; vertical-align: top; }
-        tr:last-child td { border-bottom: none; }
-        tr:hover td { background-color: #f8fafc; }
+        .table-container { background-color: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.01); overflow-x: auto; border: 1px solid #e2e8f0; margin-bottom: 30px; width: 100%; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13.5px; min-width: 800px; }
+        th { background-color: #f8fafc; padding: 16px 20px; font-weight: 700; color: var(--text-dark); border-bottom: 2px solid #e2e8f0; font-family: 'Rubik', sans-serif; }
+        td { padding: 16px 20px; border-bottom: 1px solid #e2e8f0; line-height: 1.6; vertical-align: top; }
 
-        /* SYSTEMY INTERAKTYWNE */
-        .interactive-container { background-color: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; display: flex; flex-direction: column; align-items: center; min-height: 400px; justify-content: center; position: relative; }
-        
-        /* FISZKI */
-        .flashcard-box { width: 100%; max-width: 550px; height: 320px; perspective: 1000px; cursor: pointer; margin-bottom: 30px; }
-        .flashcard-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* INTERACTIVE INTERFACES */
+        .interactive-container { background-color: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.01); border: 1px solid #e2e8f0; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+        .flashcard-box { width: 100%; max-width: 550px; height: 320px; perspective: 1000px; cursor: pointer; }
+        .flashcard-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         .flashcard-box.flipped .flashcard-inner { transform: rotateY(180deg); }
-        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 2px solid #e2e8f0; }
-        .card-front { background: linear-gradient(135deg, #ffffff, #f8fafc); color: var(--text-dark); border-top: 6px solid var(--color-primary); }
-        .card-back { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; transform: rotateY(180deg); border-top: 6px solid var(--color-secondary); }
-        .card-front h3 { font-family: 'Rubik', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.5; }
-        .card-back p { font-size: 16px; line-height: 1.7; font-weight: 400; }
-        .card-badge-side { position: absolute; top: 20px; left: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; }
-        .flashcard-controls { display: flex; gap: 20px; align-items: center; }
-        .btn { background-color: white; border: 1px solid #cbd5e1; padding: 12px 25px; border-radius: 10px; font-size: 14px; font-weight: 600; color: var(--text-main); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease; font-family: 'Poppins', sans-serif; }
-        .btn:hover { background-color: #f1f5f9; border-color: #94a3b8; color: var(--text-dark); }
-        .btn.primary { background: linear-gradient(135deg, #0d9488, #0f766e); color: white; border: none; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2); }
-        .btn.primary:hover { background: linear-gradient(135deg, #0f766e, #115e59); transform: translateY(-1px); }
-        .btn.danger { background: linear-gradient(135deg, #be123c, #9f1239); color: white; border: none; }
-        .btn.danger:hover { background: linear-gradient(135deg, #9f1239, #881337); }
-        .card-counter { font-size: 14px; font-weight: 600; color: #64748b; margin-top: 15px; }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; padding: 45px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 2px solid #e2e8f0; }
+        .card-front { background: #ffffff; color: var(--text-dark); border-top: 6px solid var(--color-primary); }
+        .card-back { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; transform: rotateY(180deg); border-top: 6px solid var(--color-secondary); overflow-y: auto; }
+        .card-front h3 { font-family: 'Rubik', sans-serif; font-size: 19px; font-weight: 700; line-height: 1.6; }
+        .card-back p { font-size: 14.5px; line-height: 1.6; text-align: left; }
+        .flashcard-controls { display: flex; gap: 20px; align-items: center; margin-top: 25px; }
+        .btn { background-color: white; border: 1px solid #cbd5e1; padding: 12px 25px; border-radius: 10px; font-size: 14px; font-weight: 600; color: var(--text-main); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease; }
+        .btn:hover { background-color: #f1f5f9; border-color: #94a3b8; }
+        .btn.primary { background: linear-gradient(135deg, #0d9488, #0f766e); color: white; border: none; }
+        .card-counter { font-size: 14px; font-weight: 600; color: #64748b; margin-top: 15px; font-family: 'Roboto Mono', monospace; }
 
-        /* EGZAMIN */
-        .exam-layout { width: 100%; max-width: 800px; display: flex; flex-direction: column; gap: 30px; }
-        .question-card { background-color: #f8fafc; border-radius: 14px; padding: 30px; border: 1px solid #e2e8f0; }
+        /* EXAM SIMULATOR */
+        .exam-layout { width: 100%; max-width: 800px; display: flex; flex-direction: column; gap: 25px; }
+        .question-card { background-color: #f8fafc; border-radius: 14px; padding: 30px; border: 1px solid #e2e8f0; width: 100%; }
         .question-text { font-family: 'Rubik', sans-serif; font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 20px; line-height: 1.5; }
         .options-list { display: flex; flex-direction: column; gap: 12px; }
-        .option-item { background-color: white; border: 1px solid #e2e8f0; padding: 14px 20px; border-radius: 10px; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 12px; font-weight: 500; transition: all 0.2s ease; }
-        .option-item:hover { border-color: #cbd5e1; background-color: #f1f5f9; }
-        .option-item.selected { border-color: var(--color-primary); background-color: #eff6ff; color: #1e40af; font-weight: 600; }
-        .option-item.correct { border-color: var(--color-success); background-color: #ecfdf5; color: #065f46; font-weight: 600; }
-        .option-item.wrong { border-color: var(--color-danger); background-color: #fff1f2; color: #9f1239; font-weight: 600; }
-        .option-marker { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #cbd5e1; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; background-color: white; flex-shrink: 0; }
-        .option-item.selected .option-marker { border-color: var(--color-primary); background-color: var(--color-primary); color: white; }
+        .option-item { background-color: white; border: 1px solid #e2e8f0; padding: 14px 20px; border-radius: 10px; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 12px; font-weight: 500; transition: all 0.15s ease; }
+        .option-item:hover { background-color: #f1f5f9; border-color: #cbd5e1; }
+        .option-item.correct { border-color: var(--color-success); background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .option-item.wrong { border-color: var(--color-danger); background-color: #fff1f2; color: #9f1239; font-weight: 700; }
+        .option-marker { width: 24px; height: 24px; border-radius: 50%; border: 2px solid #cbd5e1; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; background-color: white; flex-shrink: 0; }
         .option-item.correct .option-marker { border-color: var(--color-success); background-color: var(--color-success); color: white; }
         .option-item.wrong .option-marker { border-color: var(--color-danger); background-color: var(--color-danger); color: white; }
-        .rationale-box { background-color: #f0fdfa; border-left: 4px solid var(--color-secondary); padding: 20px; border-radius: 0 10px 10px 0; margin-top: 20px; font-size: 13.5px; line-height: 1.6; color: #115e59; display: none; }
-        .exam-stats { display: flex; gap: 30px; background-color: white; padding: 20px 30px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 25px; width: 100%; justify-content: space-around; text-align: center; }
-        .stat-val { font-size: 24px; font-weight: 700; color: var(--text-dark); }
-        .stat-label { font-size: 12px; color: #64748b; font-weight: 500; text-transform: uppercase; margin-top: 2px; }
+        .rationale-box { background-color: #f0fdfa; border-left: 4px solid var(--color-secondary); padding: 20px; border-radius: 0 10px 10px 0; margin-top: 20px; font-size: 14px; line-height: 1.6; color: #115e59; display: none; }
+        .exam-stats { display: flex; gap: 20px; background-color: white; padding: 20px 30px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 25px; width: 100%; justify-content: space-around; }
+        .stat-val { font-size: 24px; font-weight: 700; color: var(--text-dark); text-align: center; }
+        .stat-label { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; margin-top: 2px; }
+
+        @media (max-width: 1024px) {
+            body { flex-direction: column; overflow-y: auto; }
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content { margin-left: 0; height: auto; }
+        }
     </style>
 </head>
 <body>
@@ -137,13 +131,13 @@
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
         <div class="nav-menu">
-            <div class="nav-item active" onclick="switchTab('mod1')"><i class="fa-solid fa-circle-nodes"></i>M1: Aberracje Chromosomowe</div>
-            <div class="nav-item" onclick="switchTab('mod2')"><i class="fa-solid fa-dna"></i>M2: Mikrodelecje & Imprinting</div>
+            <div class="nav-item active" onclick="switchTab('mod1')"><i class="fa-solid fa-circle-nodes"></i>M1: Aberracje Liczbowe</div>
+            <div class="nav-item" onclick="switchTab('mod2')"><i class="fa-solid fa-fingerprint"></i>M2: Imprinting & Mikrodelecje</div>
             <div class="nav-item" onclick="switchTab('mod3')"><i class="fa-solid fa-baby"></i>M3: Skale Pediatryczne</div>
-            <div class="nav-item" onclick="switchTab('mod4')"><i class="fa-solid fa-cancer"></i>M4: Onkologia Genetyczna</div>
-            <div class="nav-item" onclick="switchTab('mod5')"><i class="fa-solid fa-brain"></i>M5: Neurologia & Metabolizm</div>
-            <div class="nav-item" onclick="switchTab('mod6')"><i class="fa-solid fa-heart-pulse"></i>M6: Tkanka Łączna & Skóra</div>
-            <div class="nav-item" onclick="switchTab('mod7')"><i class="fa-solid fa-eye"></i>M7: Zmysły & Izolowane Wady</div>
+            <div class="nav-item" onclick="switchTab('mod4')"><i class="fa-solid fa-biohazard"></i>M4: Onkologia Genetyczna</div>
+            <div class="nav-item" onclick="switchTab('mod5')"><i class="fa-solid fa-brain"></i>M5: Neurogenetyka & Metabolizm</div>
+            <div class="nav-item" onclick="switchTab('mod6')"><i class="fa-solid fa-bone"></i>M6: Patologie Tkanki Łącznej</div>
+            <div class="nav-item" onclick="switchTab('mod7')"><i class="fa-solid fa-eye"></i>M7: Patologie Narządów Zmysłów</div>
             <div class="nav-item" onclick="switchTab('mod8')"><i class="fa-solid fa-vials"></i>M8: Diagnostyka & Terapie</div>
             <div class="nav-item" onclick="switchTab('matrix')"><i class="fa-solid fa-table-cells"></i>M9: Matrix Genetyczny</div>
             <div class="nav-item" onclick="switchTab('flashcards')"><i class="fa-solid fa-layer-group"></i>Fiszki Interaktywne</div>
@@ -155,51 +149,43 @@
 
         <div id="mod1" class="content-tab active">
             <div class="module-header">
-                <h1>Moduł 1: Klasyczne Aberracje Chromosomowe</h1>
-                <p>Zespoły wad wrodzonych spowodowane zmianami struktury lub liczby chromosomów.</p>
+                <h1>Moduł 1: Klasyczne Aberracje Liczbowe</h1>
+                <p>Zespoły wad wrodzonych spowodowane zmianami liczby chromosomów (Aneuploidie).</p>
             </div>
-            
-            <h3 class="section-title"><i class="fa-solid fa-triangle-exclamation"></i> Zespoły Aberracji Liczbowych (Aneuploidie)</h3>
             <div class="grid-layout">
                 <div class="hy-card primary">
                     <span class="card-badge badge-ad">Trisomia 21</span>
                     <h4>Zespół Downa</h4>
                     <ul>
-                        <li><i class="fa-solid fa-face-smile"></i><span class="bullet-bold">Dysmorfia twarzy:</span> Płaski profil twarzy, skośne szpary powiekowe, wyraźny fałd nakątny (epicanthus), małe nisko osadzone uszy, makroglosja (duży, wystający język), podniebienie gotyckie.</li>
-                        <li><i class="fa-solid fa-hand"></i><span class="bullet-bold">Kończyny i skóra:</span> Pojedyncza poprzeczna bruzda dłoniowa (bruzda małpia), szeroka przerwa między I a II palcem stopy (bruzda sandałowa), klinodaktylia V palca, skóra marmurkowata.</li>
-                        <li><i class="fa-solid fa-heart"></i><span class="bullet-bold">Wady narządowe:</span> Wspólny kanał przedsionkowo-komorowy (<strong>AVSD</strong> — sztandarowy pewniak!), atrezja dwunastnicy (objaw double-bubble w RTG).</li>
-                        <li><i class="fa-solid fa-dna"></i><span class="bullet-bold">Korelacje molekularne:</span> Nadekspresja genu <em>DYRK1A</em> (odpowiada za niepełnosprawność intelektualną) oraz genu <em>APP</em> na chromosomie 21 (skutkuje odkładaniem beta-amyloidu i wczesną chorobą Alzheimera już po 40. rż.). Drastycznie podwyższone ryzyko ostrej białaczki megakarioblastycznej (AMKL).</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Dysmorfia twarzy:</span> Płaski profil twarzy, skośne szpary powiekowe, wyraźny fałd nakątny (epicanthus), małe uszy, makroglosja (duży język), podniebienie gotyckie.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Kończyny i skóra:</span> Pojedyncza poprzeczna bruzda dłoniowa (bruzda małpia), szeroka przerwa między I a II palcem stopy (bruzda sandałowa), skóra marmurkowata.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Wady narządowe:</span> Wspólny kanał przedsionkowo-komorowy (<strong>AVSD</strong> — sztandarowy pewniak egzaminacyjny!), atrezja dwunastnicy.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Korelacje molekularne:</span> Nadekspresja genu <strong>DYRK1A</strong> oraz genu <strong>APP</strong> na chromosomie 21 (wczesna choroba Alzheimera po 40. rż.). Ryzyko ostrej białaczki megakarioblastycznej (AMKL).</li>
                     </ul>
                 </div>
-
                 <div class="hy-card primary">
                     <span class="card-badge badge-ad">Trisomia 18</span>
                     <h4>Zespół Edwardsa</h4>
                     <ul>
-                        <li><i class="fa-solid fa-hand-fist"></i><span class="bullet-bold">Objaw patognomoniczny:</span> Charakterystyczne <strong>nakładanie się palców dłoni</strong> (palec II i V nakładają się na III i IV przy zaciśniętej pięści).</li>
-                        <li><i class="fa-solid fa-skull"></i><span class="bullet-bold">Dysmorfia i układ kostny:</span> Łódkowata czaszka (dolichocefalia) z wyraźnie wystającą potylicą, mikrognacja, stopy o zaokrąglonej podeszwie (<strong>stopy kołyskowe</strong> / rocker-bottom feet).</li>
-                        <li><i class="fa-solid fa-baby"></i><span class="bullet-bold">Fenotyp ogólny:</span> Skrajna hipotrofia wewnątrzmaciczna, wady serca (VSD, ASD, PDA), niemal 100% śmiertelność w 1. roku życia.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Objaw patognomoniczny:</span> Charakterystyczne <strong>nakładanie się palców dłoni</strong> (palec II i V nachodzą na III i IV przy zaciśniętej pięści).</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Dysmorfia:</span> Dolichocefalia z wyraźnie wystającą potylicą, mikrognacja, stopy o zaokrąglonej podeszwie (<strong>stopy kołyskowe</strong>). Skrajna hipotrofia wewnątrzmaciczna.</li>
                     </ul>
                 </div>
             </div>
-
             <div class="grid-layout">
                 <div class="hy-card primary">
                     <span class="card-badge badge-ad">Trisomia 13</span>
-                    <h4>Zespół Pataua</h4>
+                    <h4>Zespół Patau</h4>
                     <ul>
-                        <li><i class="fa-solid fa-scissors"></i><span class="bullet-bold">Wady pośrodkowe:</span> <strong>Holoprozencefalia</strong> (niedokonany podział przodomózgowia), ciężkie rozszczepy wargi i podniebienia, jednooczność lub mikroftalmia, aplazja skóry skalpu (cutis aplasia).</li>
-                        <li><i class="fa-solid fa-hand-dots"></i><span class="bullet-bold">Kończyny:</span> Polidaktylia pozaosiowa (dodatkowe palce).</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Wady pośrodkowe:</span> <strong>Holoprozencefalia</strong> (niedokonany podział przodomózgowia), ciężkie rozszczepy wargi i podniebienia, mikroftalmia, aplazja skóry skalpu (cutis aplasia). Polidaktylia pozaosiowa.</li>
                     </ul>
                 </div>
-
                 <div class="hy-card primary">
                     <span class="card-badge badge-xr">45,X</span>
                     <h4>Zespół Turnera</h4>
                     <ul>
-                        <li><i class="fa-solid fa-venus"></i><span class="bullet-bold">Fenotyp żeński:</span> Niski wzrost (główny objaw), płetwiasta szyja (pterygium colli), niska linia owłosienia na karku, szeroka tarcza klatki piersiowej z szeroko rozstawionymi brodawkami sutkowymi.</li>
-                        <li><i class="fa-solid fa-ovary"></i><span class="bullet-bold">Rozród:</span> Dysgenezja jajników (<strong>jajniki pasmowate</strong>), pierwotny brak miesiączki, bezpłodność. Hypergonadotropowy hipogonadyzm.</li>
-                        <li><i class="fa-solid fa-heart-crack"></i><span class="bullet-bold">Układ krążenia i nerek:</span> Koarktacja aorty (CoA), dwupłatkowa zastawka aorty (BAV), naczyniaki limfatyczne, naczynioruchowy obrzęk stóp i dłoni u noworodków. Nerka podkowiasta.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Fenotyp i wady:</span> Niski wzrost, płetwiasta szyja (pterygium colli), niska linia owłosienia, szeroka tarcza klatki piersiowej. Koarktacja aorty (CoA), dwupłatkowa zastawka aorty (BAV).</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Rozród:</span> Dysgenezja jajników (<strong>jajniki pasmowate</strong>), pierwotny brak miesiączki, bezpłodność. Hypergonadotropowy hipogonadyzm. Nerka podkowiasta.</li>
                     </ul>
                 </div>
             </div>
@@ -207,45 +193,38 @@
 
         <div id="mod2" class="content-tab">
             <div class="module-header">
-                <h1>Moduł 2: Zespoły Mikrodelecyjne i Zaburzenia Imprintingu</h1>
-                <p>Choroby wywołane utratą submikroskopowych fragmentów DNA oraz zaburzeniem epigenetycznego piętnowania genomowego.</p>
+                <h1>Moduł 2: Zespoły Mikrodelecyjne i Defekty Imprintingu</h1>
+                <p>Choroby wywołane utratą submikroskopowych fragmentów DNA oraz zaburzeniem piętnowania genomowego.</p>
             </div>
-
-            <h3 class="section-title"><i class="fa-solid fa-scissors"></i> Zespoły Mikrodelecyjne</h3>
             <div class="grid-layout">
                 <div class="hy-card secondary">
                     <span class="card-badge badge-ad">del 22q11.2</span>
-                    <h4>Zespół DiGeorge'a (CATCH-22)</h4>
+                    <h4>Zespół DiGeorge'a</h4>
                     <ul>
-                        <li><i class="fa-solid fa-shield-virus"></i><span class="bullet-bold">Akronim kliniczny:</span> <strong>C</strong>ardiac defects (wady stożkowo-pniowe serca np. tetralogia Fallota, przerwany łuk aorty), <strong>A</strong>bnormal facies, <strong>T</strong>hymic hypoplasia (aplazja grasicy, ciężki niedobór odporności komórkowej), <strong>C</strong>left palate (rozszczep podniebienia/niewydolność podniebienno-gardłowa), <strong>H</strong>ypocalcemia (hipokalcemia z aplazji przytarczyc powodująca drgawki noworodkowe).</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Akronim CATCH-22:</span> <strong>C</strong>ardiac defects (wady stożkowo-pniowe serca), <strong>A</strong>bnormal facies, <strong>T</strong>hymic hypoplasia (aplazja grasicy, niedobór odporności komórkowej T), <strong>C</strong>left palate (rozszczep podniebienia), <strong>H</strong>ypocalcemia (hipokalcemia z aplazji przytarczyc dająca drgawki noworodkowe).</li>
                     </ul>
                 </div>
-
                 <div class="hy-card secondary">
                     <span class="card-badge badge-ad">del 7q11.23</span>
                     <h4>Zespół Williamsa</h4>
                     <ul>
-                        <li><i class="fa-solid fa-face-grin-tears"></i><span class="bullet-bold">Fenotyp i zachowanie:</span> Twarz elfa (szerokie czoło, obwisłe policzki, długa rynienka podnosowa), <strong>osobowość koktajlowa</strong> (skrajna gadatliwość, brak lęku przed obcymi, wysoka towarzyskość, stany lękowe), wybitny talent muzyczny lub słuch absolutny.</li>
-                        <li><i class="fa-solid fa-heart-pulse"></i><span class="bullet-bold">Wady:</span> Nadzastawkowe zwężenie aorty (SVAS), idiopatyczna hiperkalcemia u dzieci.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Klinika:</span> Twarz elfa, nadzastawkowe zwężenie aorty (SVAS), idiopatyczna hiperkalcemia. <strong>Osobowość koktajlowa</strong> (skrajna gadatliwość, brak lęku przed obcymi, wysoka towarzyskość).</li>
                     </ul>
                 </div>
             </div>
-
-            <h3 class="section-title"><i class="fa-solid fa-fingerprint"></i> Defekty Imprintingu (Piętnowania Genomowego)</h3>
             <div class="grid-layout">
                 <div class="hy-card secondary">
                     <span class="card-badge badge-ad">15q11-q13 mat</span>
                     <h4>Zespół Angelmana ("Happy Puppet Syndrome")</h4>
                     <ul>
-                        <li><i class="fa-solid fa-child-laughing"></i><span class="bullet-bold">Mechanizm i objawy:</span> Utrata matczynej kopii genu <strong>UBE3A</strong> (kodującego ligazę ubikwityny) wskutek delecji matczynej (70%) lub UPD ojcowskiej (jednorodzicielskiej disomii). Objawy: napady niekontrolowanego śmiechu, ataksja chodu (chód na szerokiej podstawie z uniesionymi rękami przypominający poruszanie się marionetki), skrajne zaburzenia mowy (często całkowity brak ekspresji słownej), padaczka.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Mechanizm i objawy:</span> Utrata matczynej kopii genu <strong>UBE3A</strong> (ligaza ubikwityny). Objawy: napady niekontrolowanego śmiechu, ataksja chodu (chód kukiełkowy na szerokiej podstawie z uniesionymi rękami), całkowity brak mowy, padaczka.</li>
                     </ul>
                 </div>
-
                 <div class="hy-card secondary">
                     <span class="card-badge badge-ad">15q11-q13 pat</span>
                     <h4>Zespół Pradera-Willego (PWS)</h4>
                     <ul>
-                        <li><i class="fa-solid fa-utensils"></i><span class="bullet-bold">Mechanizm i objawy:</span> Utrata ojcowskiej kopii regionu 15q11-q13 (brak genu <em>SNRPN</em>). W okresie noworodkowym: ciężka wiotkość mięśniowa (hipotonia), trudności w karmieniu. Od wczesnego dzieciństwa: <strong>niepohamowany głód (hiperfagia)</strong> prowadzący do chorobliwej, olbrzymiej otyłości z powodu braku uczucia sytości. Niski wzrost, małe dłonie i stopy, hipogonadyzm hipogonadotropowy.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Mechanizm i objawy:</span> Utrata ojcowskiej kopii regionu 15q11-q13 (brak genu <em>SNRPN</em>). W okresie noworodkowym: wiotkość mięśniowa (hipotonia). Od dzieciństwa: <strong>niepohamowany głód (hiperfagia)</strong> prowadzący do chorobliwej otyłości, małe dłonie i stopy, hipogonadyzm.</li>
                     </ul>
                 </div>
             </div>
@@ -256,19 +235,17 @@
                 <h1>Moduł 3: Skale Kliniczne Stosowane w Pediatrii</h1>
                 <p>Narzędzia diagnostyczne, ocena dysmorfii i algorytmy klasyfikacyjne.</p>
             </div>
-
-            <h3 class="section-title"><i class="fa-solid fa-calculator"></i> Skale i Kryteria Diagnostyczne</h3>
             <div class="grid-layout">
                 <div class="hy-card primary">
                     <h4>Skala Silvermana-Andersena</h4>
                     <ul>
-                        <li><i class="fa-solid fa-lungs"></i><span class="bullet-bold">Zastosowanie:</span> Ocena wydolności i stopnia niewydolności oddechowej u noworodków. Obejmuje 5 parametrów (poruszanie skrzydełek nosa, stękanie wydechowe, wciąganie międzyżebrzy, wciąganie mostka, synchroniczność ruchów klatki piersiowej i brzucha). Każdy parametr oceniany 0-2 pkt. Wynik 10 pkt oznacza skrajną niewydolność.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Zastosowanie:</span> Ocena niewydolności oddechowej u noworodków. Parametry: poruszanie skrzydełek nosa, stękanie wydechowe, retrakcja mostka, wciąganie przestrzeni międzyżebrowych, synchroniczność ruchów klatki i brzucha.</li>
                     </ul>
                 </div>
                 <div class="hy-card primary">
                     <h4>Skala Apgar</h4>
                     <ul>
-                        <li><i class="fa-solid fa-baby-carriage"></i><span class="bullet-bold">Zastosowanie:</span> Ocena stanu noworodka w 1., 3., 5. i 10. minucie życia. Parametry: czynność serca (akcja >100/min), wysiłek oddechowy, napięcie mięśniowe, reakcja na cewnik/bodźce, zabarwienie skóry. Maksymalnie 10 punktów.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Zastosowanie:</span> Ocena stanu noworodka w 1., 3., 5. i 10. minucie życia. Parametry: akcja serca, wysiłek oddechowy, napięcie mięśniowe, reakcja na bodźce (cewnik), zabarwienie skóry.</li>
                     </ul>
                 </div>
             </div>
@@ -276,38 +253,34 @@
 
         <div id="mod4" class="content-tab">
             <div class="module-header">
-                <h1>Moduł 4: Onkologia Genetyczna i Zespoły Predyspozycji do Nowotworów</h1>
+                <h1>Moduł 4: Onkologia Genetyczna i Zespoły Predyspozycji</h1>
                 <p>Dziedziczne zespoły nowotworowe, mutacje genów supresorowych i protoonkogenów.</p>
             </div>
-
-            <h3 class="section-title"><i class="fa-solid fa-shield-halved"></i> Geny Supresorowe vs Onkogeny</h3>
             <div class="grid-layout">
                 <div class="hy-card danger">
                     <span class="card-badge badge-ad">AD / Supresor</span>
                     <h4>Zespół Li-Fraumeni (LFS)</h4>
                     <ul>
-                        <li><i class="fa-solid fa-dna"></i><span class="bullet-bold">Podłoże molekularne:</span> Dziedziczna mutacja linii zarodkowej w genie supresorowym <strong>TP53</strong> (chromosom 17p13.1) – "strażniku genomu". Katastrofalne upośledzenie apoptozy i naprawy DNA.</li>
-                        <li><i class="fa-solid fa-biohazard"></i><span class="bullet-bold">Spektrum nowotworów:</span> Wczesne mięsaki tkanek miękkich i kości (osteosarcoma), przedmenopauzalny rak piersi, guzy mózgu (glejaki, rdzeniaki), raki kory nadnerczy (ACC), białaczki. Rodziny wykazują wielopoziomowe agregacje nowotworów u młodych dorosłych i dzieci.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Podłoże molekularne:</span> Germinalna mutacja w genie supresorowym <strong>TP53</strong> (chromosom 17p13.1) – "strażniku genomu".</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Klinika:</span> Wczesne mięsaki tkanek miękkich i kości (osteosarcoma), przedmenopauzalny rak piersi, guzy mózgu, raki kory nadnerczy (ACC), białaczki u dzieci i młodych dorosłych.</li>
                     </ul>
                 </div>
-
                 <div class="hy-card danger">
                     <span class="card-badge badge-ad">AD / Onkogen</span>
-                    <h4>Zespół Gruczolakowatości Wewnątrzwydzielniczej Typu 2 (MEN2)</h4>
+                    <h4>Zespół MEN2 (Gruczolakowatość Wewnątrzwydzielnicza Typu 2)</h4>
                     <ul>
-                        <li><i class="fa-solid fa-bolt"></i><span class="bullet-bold">Molekularny wyjątek:</span> Spowodowany aktywującą mutacją typu gain-of-function w protoonkogenie <strong>RET</strong> (10q11.2). <strong>MEN2 to podręcznikowy przykład zespołu nowotworowego wywołanego mutacją protoonkogenu, a NIE genu supresorowego!</strong></li>
-                        <li><i class="fa-solid fa-pills"></i><span class="bullet-bold">Klinika i MEN2A vs MEN2B:</span> W obu podtypach występuje 100% ryzyko <strong>raka rdzeniastego tarczycy (MTC)</strong> oraz pheochromocytoma (guz chromochłonny nadnerczy). W MEN2A: dodatkowo nadczynność przytarczyc. W MEN2B: ganglioneuromatoza śluzówek (guzki na języku, wargach), marfanoidalna budowa ciała, <strong>brak nadczynności przytarczyc</strong>. Profilaktyczna tyreoidektomia wykonywana w 1. roku życia w mutacjach wysokiego ryzyka (MEN2B).</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Molekularny pewniak:</span> Spowodowany aktywującą mutacją typu gain-of-function w protoonkogenie <strong>RET</strong> (10q11.2). <strong>MEN2 to podręcznikowy przykład zespołu wywołanego mutacją protoonkogenu, a NIE genu supresorowego!</strong></li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Klinika:</span> 100% ryzyko <strong>raka rdzeniastego tarczycy (MTC)</strong> oraz pheochromocytoma. W MEN2B: ganglioneuromatoza śluzówek (guzki na języku, wargach), marfanoidalna budowa ciała, <strong>brak nadczynności przytarczyc</strong>. Profilaktyczna tyreoidektomia w 1. roku życia.</li>
                     </ul>
                 </div>
             </div>
-
             <div class="grid-layout">
                 <div class="hy-card danger">
                     <span class="card-badge badge-ad">AD / Supresor</span>
                     <h4>Retinoblastoma (Siatkówczak) & Guz Wilmsa</h4>
                     <ul>
-                        <li><i class="fa-solid fa-eye"></i><span class="bullet-bold">Retinoblastoma:</span> Mutacja genu <strong>RB1</strong> (13q14). Hipoteza dwóch uderzeń Knudsona: w postaci dziedzicznej pierwsze uderzenie jest w linii zarodkowej (guzy są obustronne, wieloogniskowe), w sporadycznej oba są somatyczne (guz jednostronny). Objaw: leukokoria (biały refleks źrenicy).</li>
-                        <li><i class="fa-solid fa-kidneys"></i><span class="bullet-bold">Guz Wilmsa (Nerczak płodowy):</span> Złośliwy nowotwór <strong>nerki</strong> wieku dziecięcego. Związany z mutacjami genu <strong>WT1</strong> (11p13). Występuje w zespole WAGR (Guz Wilmsa, Aniridia - brak tęczówki, Wady moczowo-płciowe, Opóźnienie rozwoju) oraz zespole Denysa-Drasha.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Retinoblastoma:</span> Mutacja genu <strong>RB1</strong> (13q14). Hipoteza dwóch uderzeń Knudsona. Objaw: leukokoria (biały refleks źrenicy). Postać dziedziczna daje guzy obustronne i wieloogniskowe.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Guz Wilmsa (Nerczak płodowy):</span> Złośliwy nowotwór <strong>nerki</strong> wieku dziecięcego. Gen <strong>WT1</strong> (11p13). Zespół WAGR: Guz Wilmsa, Aniridia (brak tęczówki), Wady moczowo-płciowe, Opóźnienie rozwoju.</li>
                     </ul>
                 </div>
             </div>
@@ -318,55 +291,41 @@
                 <h1>Moduł 5: Neurogenetyka, Mutacje Dynamiczne i Bloki Metaboliczne</h1>
                 <p>Schorzenia neurodegeneracyjne, ekspansje powtórzeń tripletów oraz wrodzone wady metabolizmu.</p>
             </div>
-
-            <h3 class="section-title"><i class="fa-solid fa-brain"></i> Mutacje Dynamiczne i Choroby Układu Nerwowego</h3>
-            <div class="grid-layout" style="margin-bottom: 25px;">
+            <h3 class="section-title"><i class="fa-solid fa-brain"></i> Mutacje Dynamiczne i Choroby OUN</h3>
+            <div class="grid-layout">
                 <div class="hy-card warning">
                     <span class="card-badge badge-ad">AD</span>
                     <h4>Choroba Huntingtona (HD)</h4>
                     <ul>
-                        <li><i class="fa-solid fa-dna"></i><span class="bullet-bold">Dziedziczenie i Gen:</span> Dziedziczenie <strong>autosomalne dominujące (AD)</strong> z pełną penetracją. Gen <strong>HTT</strong> (kodujący huntingtynę) na chromosomie <strong>4p16.3</strong>.</li>
-                        <li><i class="fa-solid fa-bolt"></i><span class="bullet-bold">Patomechanizm:</span> Mutacja dynamiczna – ekspansja powtórzeń tripletów <strong>CAG</strong> (&gt;36 powtórzeń). Agregaty białkowe niszczą neurony gabaergiczne w prążkowiu (jądro ogoniaste). Występuje <strong>antycypacja w linii ojcowskiej</strong>.</li>
-                        <li><i class="fa-solid fa-user-doctor"></i><span class="bullet-bold">Objawy:</span> Klasyczna triada: <strong>ruchy pląsawicze</strong>, postępujące <strong>otępienie (zaburzenia poznawcze)</strong> oraz <strong>zaburzenia psychiatryczne</strong> (zmiany osobowości, głęboka depresja). Diagnostyka opiera się na badaniu <strong>PCR</strong>.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Podłoże:</span> Dziedziczenie <strong>autosomalne dominujące (AD)</strong>. Gen <strong>HTT</strong> (huntingtyna) na chromosomie <strong>4p16.3</strong>.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Patomechanizm:</span> Mutacja dynamiczna — ekspansja powtórzeń tripletów <strong>CAG</strong> (&gt;36 powtórzeń). Agregaty niszczą neurony prążkowia (jądro ogoniaste). <strong>Antycypacja w linii ojcowskiej</strong>.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Objawy:</span> Klasyczna triada: <strong>ruchy pląsawicze</strong>, postępujące <strong>otępienie</strong> oraz <strong>zaburzenia psychiatryczne</strong> (depresja). Diagnostyka metodą <strong>PCR</strong>.</li>
                     </ul>
                 </div>
-
                 <div class="hy-card warning">
                     <span class="card-badge badge-ar">AR</span>
                     <h4>Leukodystrofia Metachromatyczna (MLD)</h4>
                     <ul>
-                        <li><i class="fa-solid fa-flask"></i><span class="bullet-bold">Podłoże:</span> Dziedziczenie AR, wywołane niedoborem enzymu <strong>arylosulfatazy A (ARSA)</strong>, co prowadzi do gromadzenia sulfatydów i niszczenia osłonek mielinowych.</li>
-                        <li><i class="fa-solid fa-crutch"></i><span class="bullet-bold">Klinika:</span> Triada objawów: <strong>postępujące zaburzenia chodu, osłabienie mięśniowe (wiotkość przechodząca w spastyczność), opóźnienie i regres rozwoju psychoruchowego</strong> oraz napady drgawkowe.</li>
-                    </ul>
-                </div>
-
-                <div class="hy-card danger">
-                    <span class="card-badge badge-ad">AD</span>
-                    <h4>Kraniosynostozy i Patologie Układu Kostnego</h4>
-                    <ul>
-                        <li><i class="fa-solid fa-skull"></i><span class="bullet-bold">Mechanizm i Geny:</span> Przedwczesne zarastanie niektórych szwów czaszkowych (nie wszystkich jednocześnie!), co wymusza asymetryczny i nieprawidłowy wzrost czaszki w wolnych kierunkach. Często związane z mutacjami w genach receptorów dla czynnika wzrostu fibroblastów (<strong>FGFR1, FGFR2, FGFR3</strong>) np. w zespołach Aperta, Crouzona czy Pfeiffera.</li>
-                        <li><i class="fa-solid fa-droplet"></i><span class="bullet-bold">Dystrofie Mięśniowe (DMD/BMD):</span> Dziedziczone z chromosomem X. Kluczowym, niezwykle czułym biochemicznym wyznacznikiem diagnostycznym we krwi obwodowej jest drastycznie podwyższona aktywność <strong>kinazy kreatynowej (CK)</strong>.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Podłoże i klinika:</span> Dziedziczenie AR, niedobór enzymu <strong>arylosulfatazy A (ARSA)</strong>. Demielinizacja OUN i obwodowego układu nerwowego. Triada: <strong>postępujące zaburzenia chodu, osłabienie mięśniowe (wiotkość/spastyczność), opóźnienie/regres rozwoju psychoruchowego</strong>, drgawki.</li>
                     </ul>
                 </div>
             </div>
-
-            <h3 class="section-title"><i class="fa-solid fa-vial-virus"></i> Klasyczne Bloki Metaboliczne (Dziedziczenie AR)</h3>
+            <h3 class="section-title"><i class="fa-solid fa-flask"></i> Wrodzone Wady Metabolizmu</h3>
             <div class="grid-layout">
                 <div class="hy-card warning">
                     <span class="card-badge badge-ar">AR</span>
                     <h4>Fenyloketonuria (PKU)</h4>
                     <ul>
-                        <li><i class="fa-solid fa-flask"></i><span class="bullet-bold">Defekt biochemiczny:</span> Całkowity brak lub drastyczny niedobór aktywności hydroksylazy fenyloalaninowej (<strong>PAH</strong>) kodowanej na chromosomie 12q23.2. Uniemożliwia to konwersję fenyloalaniny (Phe) do tyrozyny (Tyr).</li>
-                        <li><i class="fa-solid fa-brain"></i><span class="bullet-bold">Klinika nieleczonej PKU:</span> Toksyczne uszkodzenie OUN przez metabolity (kwas fenylopirogronowy), ciężka niepełnosprawność intelektualna, małogłowie, napady padaczkowe, zachowania autystyczne, jasna karnacja, blond włosy, niebieskie oczy (efekt bloku syntezy melaniny z tyrozyny), <strong>mysi zapach moczu</strong>. Wczesne wdrożenie diety eliminacyjnej niskofenyloalaninowej zapobiega objawom neurologicznym.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Patomechanizm:</span> Niedobór aktywności hydroksylazy fenyloalaninowej (<strong>PAH</strong>) na chromosomie 12q23.2. Brak konwersji Phe do tyrozyny.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Objawy nieleczonej PKU:</span> Toksyczne uszkodzenie OUN, ciężka niepełnosprawność intelektualna, małogłowie, padaczka, jasna karnacja, blond włosy (brak melaniny), <strong>mysi zapach moczu</strong>. Dieta eliminacyjna niskofenyloalaninowa zapobiega objawom.</li>
                     </ul>
                 </div>
-
                 <div class="hy-card warning">
                     <span class="card-badge badge-ar">AR</span>
-                    <h4>Alkaptonuria & Albinizm</h4>
+                    <h4>Alkaptonuria & Kraniosynostozy</h4>
                     <ul>
-                        <li><i class="fa-solid fa-droplet"></i><span class="bullet-bold">Alkaptonuria:</span> Niedobór dioksygenazy homogen tyzynowej (HGD). Akumulacja kwasu homogentyzynowego (HGA). Objaw: <strong>mocz ciemnieje (staje się czarny) po kontakcie z powietrzem</strong>. Ochronoza (niebiesko-czarne zabarwienie tkanki łącznej, chrząstek małżowiny usznej, twardówki) i ciężkie, wczesne zmiany zwyrodnieniowe stawów obwodowych i kręgosłupa.</li>
-                        <li><i class="fa-solid fa-sun"></i><span class="bullet-bold">Albinizm (OCA1):</span> Defekt genu tyrozynazy (<em>TYR</em>), brak melaniny w skórze, włosach i naczyniówce oka, oczopląs, fotofobia.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Alkaptonuria:</span> Niedobór dioksygenazy homogentyzynowej (HGD). Objaw patognomoniczny: <strong>mocz ciemnieje i czarnieje po kontakcie z powietrzem</strong>. Ochronoza (niebiesko-czarne chrząstki uszu, twardówki) i ciężkie zmiany zwyrodnieniowe stawów.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Kraniosynostoza:</span> Przedwczesne zrastanie wybranych szwów czaszkowych (nie wszystkich!). Związane z mutacjami w receptorach wzrostu fibroblastów (<strong>FGFR1, FGFR2, FGFR3</strong>) — zespoły Aperta, Crouzona.</li>
                     </ul>
                 </div>
             </div>
@@ -375,34 +334,29 @@
         <div id="mod6" class="content-tab">
             <div class="module-header">
                 <h1>Moduł 6: Patologie Tkanki Łącznej i Fakomatozy</h1>
-                <p>Zespoły układowe tkanki łącznej oraz dysplazje neuroektodermalne.</p>
+                <p>Zespoły układowe tkanki łącznej oraz dysplazje neuroektodermalne o wysokiej ekspresji narządowej.</p>
             </div>
-
-            <h3 class="section-title"><i class="fa-solid fa-bone"></i> Genodermatozy i Fakomatozy</h3>
             <div class="grid-layout">
                 <div class="hy-card accent">
                     <span class="card-badge badge-ad">AD</span>
-                    <h4>Neurofibromatoza Typu 1 (NF1 - Choroba von Recklinghausena)</h4>
+                    <h4>Neurofibromatoza Typu 1 (NF1)</h4>
                     <ul>
-                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Kryteria diagnostyczne NIH (min. 2 z 7):</span> 
-                            1) <strong>6 lub więcej plam cafe-au-lait</strong> (kawa z mlekiem) o średnicy &gt;5 mm przed pokwitaniem lub &gt;15 mm po pokwitaniu;
-                            2) 2 lub więcej neurofibromy dowolnego typu lub 1 neurofibroma splotowata (plexiform);
-                            3) Piegowatość pod pachami lub w pachwinach (objaw Crowe'a);
-                            4) Glejak nerwu wzrokowego (optic glioma);
-                            5) <strong>2 lub więcej guzki Lischa</strong> (hamartomata tęczówki oka wykrywane w lampie szczelinowej);
-                            6) Charakterystyczne zmiany kostne (np. dysplazja kości klinowej, staw rzekomy kości piszczelowej);
-                            7) Krewny pierwszego stopnia spełniający powyższe kryteria. Gen <em>NF1</em> (17q11.2) koduje neurofibrominę, regulator szlaku RAS.
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Kryteria NIH (min. 2 z 7):</span> 
+                            1) <strong>6 lub więcej plam cafe-au-lait</strong> (&gt;5mm przed / &gt;15mm po pokwitaniu);
+                            2) 2 lub więcej neurofibromy lub 1 splotowata;
+                            3) Piegowatość pod pachami/pachwinami (objaw Crowe'a);
+                            4) Glejak nerwu wzrokowego;
+                            5) <strong>2 lub więcej guzki Lischa</strong> (hamartomata tęczówki w lampie szczelinowej);
+                            6) Zmiany kostne (dysplazja kości klinowej). Gen <em>NF1</em> (17q11.2) koduje neurofibrominę, regulator RAS.
                         </li>
                     </ul>
                 </div>
-
                 <div class="hy-card accent">
                     <span class="card-badge badge-ad">AD</span>
                     <h4>Zespół Marfana (MFS)</h4>
                     <ul>
-                        <li><i class="fa-solid fa-arrows-up-to-line"></i><span class="bullet-bold">Układ kostno-szkieletowy:</span> Dolichostenomelia (długie kończyny), arachnodaktylia (pająkowatość palców, dodatni objaw kciuka Steinberga i nadgarstka Walkera-Murdocha), klatka piersiowa szewska lub kurza, wysoki wzrost, skolioza.</li>
-                        <li><i class="fa-solid fa-heart-pulse"></i><span class="bullet-bold">Układ krążenia (krytyczne rokowanie):</span> <strong>Tętniak i rozwarstwienie aorty wstępującej</strong>, poszerzenie pnia tętnicy płucnej, wypadanie płatka zastawki mitralnej (MVP).</li>
-                        <li><i class="fa-solid fa-eye"></i><span class="bullet-bold">Narząd wzroku:</span> <strong>Zwichnięcie/podwichnięcie soczewki</strong> (ectopia lentis) — zazwyczaj w kierunku górno-skroniowym. Gen <strong>FBN1</strong> (15q21.1) koduje fibrylinę-1.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Układ kostny:</span> Dolichostenomelia, arachnodaktylia (objaw kciuka Steinberga i nadgarstka Walkera-Murdocha), klatka piersiowa szewska, wysoki wzrost.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Układ krążenia i wzroku:</span> <strong>Tętniak i rozwarstwienie aorty wstępującej</strong> (krytyczne rokowanie), wypadanie płatka zastawki mitralnej (MVP). <strong>Podwichnięcie soczewki</strong> (ectopia lentis) — typowo w kierunku górno-skroniowym. Gen <strong>FBN1</strong> (15q21.1) koduje fibrylinę-1.</li>
                     </ul>
                 </div>
             </div>
@@ -410,37 +364,25 @@
 
         <div id="mod7" class="content-tab">
             <div class="module-header">
-                <h1>Moduł 7: Patologie Narządów Zmysłów i Izolowane Wady Rozwojowe</h1>
-                <p>Genetycznie uwarunkowane upośledzenia wzroku, słuchu oraz specyficzne anomalie narządowe.</p>
+                <h1>Moduł 7: Patologie Narządów Zmysłów</h1>
+                <p>Genetycznie uwarunkowane upośledzenia wzroku, słuchu oraz specyficzne anomalie fotoreceptorów.</p>
             </div>
-
-            <h3 class="section-title"><i class="fa-solid fa-ear-deaf"></i> Zespoły Wad Narządów Zmysłów</h3>
             <div class="grid-layout">
                 <div class="hy-card secondary">
-                    <span class="card-badge badge-ar">AD / AR / XR</span>
+                    <span class="card-badge badge-ad">AD / AR / XR</span>
                     <h4>Zwyrodnienie Barwnikowe Siatkówki (Retinitis Pigmentosa - RP)</h4>
                     <ul>
-                        <li><i class="fa-solid fa-dna"></i><span class="bullet-bold">Dziedziczenie i Podłoże:</span> Wybitna heterogenność genetyczna – może dziedziczyć się <strong>autosomalnie dominująco (AD)</strong>, <strong>autosomalnie recesywnie (AR)</strong> lub <strong>sprzężone z chromosomem X (XR)</strong>. Częsta mutacja w genie <strong>RHO</strong> (rodopsyna).</li>
-                        <li><i class="fa-solid fa-eye"></i><span class="bullet-bold">Obraz Kliniczny i Triada:</span> Pierwszym objawem jest <strong>ślepota zmierzchowa ("kurza ślepota")</strong> wynikająca z pierwotnej degeneracji pręcików. Następuje postępujące zwężenie pola widzenia (<strong>widzenie tunelowe</strong>). W dnie oka widoczne są charakterystyczne <strong>złogi pigmentu przypominające ciałka kostne</strong> oraz zanik naczyń siatkówki i bladość tarczy nerwu wzrokowego.</li>
-                        <li><i class="fa-solid fa-stethoscope"></i><span class="bullet-bold">Diagnostyka:</span> Kluczowe badanie to <strong>elektroretinografia (ERG)</strong>, która wykazuje całkowite wygaszenie lub skrajne obniżenie odpowiedzi bioelektrycznej siatkówki.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Dziedziczenie i podłoże:</span> Wybitna heterogenność genetyczna (AD, AR lub XR). Częsta mutacja w genie <strong>RHO</strong> (rodopsyna). Pierwotna degeneracja fotoreceptorów pręcikowych.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Objawy i Triada:</span> Pierwszym objawem jest <strong>#ślepota zmierzchowa ("kurza ślepota")</strong>. Postępujące zwężenie pola widzenia (<strong>widzenie tunelowe</strong>). W dnie oka widoczne są charakterystyczne <strong>złogi pigmentu przypominające ciałka kostne</strong> oraz bladość tarczy nerwu wzrokowego.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Diagnostyka:</span> <strong>Elektroretinografia (ERG)</strong> wykazuje całkowite wygaszenie lub skrajne obniżenie odpowiedzi bioelektrycznej siatkówki.</li>
                     </ul>
                 </div>
-
                 <div class="hy-card secondary">
                     <span class="card-badge badge-ar">AR</span>
-                    <h4>Wrodzona Ślepota Lebera (LCA)</h4>
+                    <h4>Wrodzona Ślepota Lebera (LCA) & Zespół Ushera</h4>
                     <ul>
-                        <li><i class="fa-solid fa-vial"></i><span class="bullet-bold">Geny i Patomechanizm:</span> Dziedziczenie AR. Mutacja w genie <strong>RPE65</strong> powoduje zablokowanie cyklu wizualnego i metabolizmu witaminy A. Mutacja w genie <strong>CEP290</strong> upośledza rzęski fotoreceptorów.</li>
-                        <li><i class="fa-solid fa-baby"></i><span class="bullet-bold">Objawy:</span> Ślepota lub głębokie upośledzenie widzenia od urodzenia, brak reakcji źrenic na światło, oczopląs, oraz charakterystyczny objaw Franceschettiego (<strong>pocieranie i uciskanie gałek ocznych pięściami przez dziecko</strong>).</li>
-                        <li><i class="fa-solid fa-capsules"></i><span class="bullet-bold">Terapia:</span> Terapia genowa <strong>Luxturna (voretigene neparvovec)</strong> dostarczana podsiatkówkowo przy użyciu wektora <strong>AAV2</strong>.</li>
-                    </ul>
-                </div>
-
-                <div class="hy-card secondary">
-                    <span class="card-badge badge-ar">AR</span>
-                    <h4>Zespół Ushera</h4>
-                    <ul>
-                        <li><i class="fa-solid fa-ear"></i><span class="bullet-bold">Kombinacja fenotypowa:</span> Sprzężenie uszkodzenia dwóch zmysłów: wrodzony niedosłuch czuciowo-nerwowy (często głęboka głuchota) powiązany z postępującą <strong>retinopatią barwnikową (Retinitis Pigmentosa)</strong> prowadzącą do ślepoty. Klasyczny przykład AR głuchoślepoty.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Wrodzona Ślepota Lebera (LCA):</span> Dziedziczenie AR. Mutacja w genie <strong>RPE65</strong> (blok metabolizmu witaminy A) lub <strong>CEP290</strong> (rzęski fotoreceptorów). Ślepota od urodzenia, oczopląs, brak reakcji źrenic, oraz charakterystyczny objaw Franceschettiego (<strong>pocieranie i uciskanie gałek ocznych pięściami</strong>). ERG = brak odpowiedzi. Terapia: <strong>Luxturna</strong> podsiatkówkowo wektorem AAV2.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Zespół Ushera:</span> Sprzężenie uszkodzenia narządu słuchu i wzroku: wrodzony niedosłuch czuciowo-nerwowy powiązany z postępującym <strong>Retinitis Pigmentosa</strong>. Klasyczny przykład AR głuchoślepoty.</li>
                     </ul>
                 </div>
             </div>
@@ -448,76 +390,25 @@
 
         <div id="mod8" class="content-tab">
             <div class="module-header">
-                <h1>Moduł 8: Diagnostyka Molekularna, Badania Prenatalne i Terapie Genowe</h1>
+                <h1>Moduł 8: Diagnostyka Molekularna i Terapie Genowe</h1>
                 <p>Metodologia współczesnej genetyki klinicznej, screening i celowane programy lekowe.</p>
             </div>
-
-            <h3 class="section-title"><i class="fa-solid fa-dna"></i> Techniki Diagnostyczne i Cytogenetyczne</h3>
             <div class="grid-layout">
                 <div class="hy-card secondary">
-                    <h4>Cyfrowa Cytogenetyka i Sekwencjonowanie</h4>
+                    <h4>Techniki Sekwencjonowania i Cytogenetyki</h4>
                     <ul>
-                        <li><i class="fa-solid fa-microchip"></i><span class="bullet-bold">NGS i sekwencjonowanie całoeksomowe (WES):</span> WES sekwencjonuje eksony kodujące. <strong>Sekwencjonowanie całoeksomowe (WES) NIE wykryje mutacji dynamicznej</strong> (ekspansji powtórzeń mikrosatelitarnych), dużej delecji ani delecji subtelomerowej. Ujemny wynik badania nie wyklucza w 100% podłoża genetycznego.</li>
-                        <li><i class="fa-solid fa-server"></i><span class="bullet-bold">Metoda GWAS i Mikromacierze:</span> Badania asocjacyjne w całym genomie (<strong>GWAS</strong>) polegają na <strong>porównywaniu częstości wariantów SNP (polimorfizmów pojedynczego nukleotydu) między grupą chorych i kontrolną</strong>. Ryzyko choroby wieloczynnikowej w rodzinie <strong>wzrasta, jeśli więcej członków rodziny jest dotkniętych chorobą</strong>. Hybrydyzacja do mikromacierzy ma zastosowanie w wykrywaniu SNP.</li>
-                        <li><i class="fa-solid fa-dna"></i><span class="bullet-bold">Techniki Cytogenetyczne (aCGH, FISH, MLPA):</span> Metoda <strong>aCGH (mikromacierz)</strong> wykrywa submikroskopowe zmiany ilościowe (CNV). Technika <strong>FISH</strong> polega na hybrydyzacji z sondami fluorescencyjnymi i służy do wykrywania delecji oraz aneuploidii. Metoda <strong>MLPA</strong> służy do ilościowej oceny eksonów.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">WES (Sekwencjonowanie całoeksomowe):</span> Analizuje eksony kodujące. <strong>WES NIE wykryje mutacji dynamicznej</strong> (ekspansji powtórzeń mikrosatelitarnych), dużej delecji ani delecji subtelomerowej. Ujemny wynik badania nie wyklucza w 100% podłoża genetycznego.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">GWAS (Badania asocjacyjne genomu):</span> Porównywanie częstości wariantów SNP między grupą chorych a kontrolną w chorobach wieloczynnikowych. Ryzyko w rodzinie rośnie, jeśli więcej członków choruje.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">aCGH, FISH, MLPA:</span> aCGH wykrywa submikroskopowe zmiany ilościowe (CNV), nie wykrywa aberracji zrównoważonych. FISH polega na hybrydyzacji z sondami fluorescencyjnymi (wykrywa delecje, aneuploidie). MLPA służy do ilościowej oceny poszczególnych eksonów (złoty standard w DMD).</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Dystrofie mięśniowe:</span> Kluczowym wyznacznikiem we krwi obwodowej przy DMD/BMD jest drastycznie podwyższona aktywność <strong>kinazy kreatynowej (CK)</strong>.</li>
                     </ul>
                 </div>
-
-                <div class="hy-card secondary">
-                    <h4>Diagnostyka Prenatalna i Screeningowa</h4>
-                    <ul>
-                        <li><i class="fa-solid fa-baby-carriage"></i><span class="bullet-bold">Badania Prenatalne i Wskazania:</span> Nieinwazyjne USG, test podwójny, testy NIPT. <strong>Wskazania do wykonania amniopunkcji:</strong> wiek matki powyżej 35 lat, poprzednie dziecko z aberracją w wywiadzie, nieprawidłowy wynik nieinwazyjnego testu prenatalnego oraz rodzinne występowanie choroby genetycznej możliwej do rozpoznania prenatalnie. Amniopunkcja od 15. Hbd, CVS w 10.-14. Hbd.</li>
-                        <li><i class="fa-solid fa-droplet"></i><span class="bullet-bold">Wady Cewy i Przesiew Noworodkowy:</span> Podwyższone stężenie alfa-fetoproteiny (AFP) w surowicy matki wiąże się z wadą wywołaną przez <strong>nieprawidłowe zamknięcie cewy nerwowej we wczesnym okresie ciąży</strong>. Badania przesiewowe noworodków obejmują w Polsce obowiązkowo <strong>fenyloketonurię, mukowiscydozę oraz wrodzoną niedoczynność tarczycy (oraz SMA)</strong>.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3 class="section-title"><i class="fa-solid fa-briefcase-medical"></i> Zaawansowane Programy Lekowe i Terapie Genowe</h3>
-            <div class="grid-layout" style="margin-bottom: 25px;">
                 <div class="hy-card accent">
-                    <span class="card-badge badge-ar">LCA</span>
-                    <h4>Terapia Genowa Luxturna</h4>
+                    <h4>Zaawansowane Programy Lekowe</h4>
                     <ul>
-                        <li><i class="fa-solid fa-prescription-bottle-medical"></i><span class="bullet-bold">Mechanizm i Wskazanie:</span> Terapia genowa <em>in vivo</em> <strong>Voretingene Neparvovec (Luxturna)</strong> stosowana u chorych na wrodzoną ślepotę Lebera z mutacją genu <strong>RPE65</strong>. Dostarcza sprawną kopię cDNA bezpośrednio podsiatkówkowo przy użyciu wektora <strong>AAV2</strong>.</li>
-                        <li><i class="fa-solid fa-eye"></i><span class="bullet-bold">Kluc merytoryczny:</span> Przywraca prawidłowe funkcjonowanie cyklu wizualnego izomeryzacji retinolu.</li>
-                    </ul>
-                </div>
-
-                <div class="hy-card accent">
-                    <span class="card-badge badge-ar">SMA</span>
-                    <h4>Terapia Genowa Zolgensma</h4>
-                    <ul>
-                        <li><i class="fa-solid fa-kit-medical"></i><span class="bullet-bold">Substancja i Wektor:</span> <strong>Onasemnogen abeparwowek (Zolgensma)</strong> – jednorazowy wlew dożylny terapii genowej substytucyjnej wykorzystujący nieintegrujący, rekombinowany wektor wirusowy <strong>AAV9</strong> niosący ludzkie cDNA genu <strong>SMN1</strong>.</li>
-                        <li><i class="fa-solid fa-triangle-exclamation"></i><span class="bullet-bold">Działania Niepożądane:</span> <strong>Najczęstszym objawem niepożądanym jest bezobjawowa hipertransaminazemia</strong> (uszkodzenie hepatocytów, wzrost ALAT/ASPAT), dlatego rutynowo stosuje się osłonę glikokortykosteroidami (np. prednizolon).</li>
-                        <li><i class="fa-solid fa-syringe"></i><span class="bullet-bold">Szczepienia:</span> <strong>Pacjent w trakcie sterydoterapii po Zolgensma jest bezwzględnie zdyskwalifikowany ze szczepień preparatami żywymi</strong> (aż do odstawienia sterydów i uzyskania bezpiecznych parametrów odpornościowych). Szczepionki zabite (inaktywowane) mogą być podawane bez przeszkód.</li>
-                    </ul>
-                </div>
-
-                <div class="hy-card accent">
-                    <span class="card-badge badge-ar">AADC</span>
-                    <h4>Terapia Genowa Upstaza (Eladokagen Eksuparwowek)</h4>
-                    <ul>
-                        <li><i class="fa-solid fa-brain"></i><span class="bullet-bold">Neurochirurgiczny mechanizm podania:</span> Zaawansowana terapia celowana rzadkiego bloku metabolicznego – deficytu dekarboksylazy L-aminokwasów aromatycznych (AADC). Lek <strong>eladokagen eksuparwowek (Upstaza)</strong> podaje się śródmózgowo w postaci precyzyjnej mikroinfuzji stereotaktycznej do <strong>skorupy (putamen)</strong> obustronnie, wprowadzając wektor AAV2 kodujący funkcjonalny enzym AADC bezpośrednio do struktur OUN.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="grid-layout" style="margin-bottom: 25px;">
-                <div class="hy-card warning">
-                    <span class="card-badge badge-ad">ASO</span>
-                    <h4>Oligonukleotydy Antysensowne (ASO) & Splicing-Modulators</h4>
-                    <ul>
-                        <li><i class="fa-solid fa-dna"></i><span class="bullet-bold">Nusinersen (Spinraza):</span> Lek modyfikujący splicing pre-mRNA, nie jest to klasyczna terapia genowa substytucyjna. To syntetyczny oligonukleotyd antysensowny (ASO) podawany dokanałowo (nakłucie lędźwiowe). Wiąże się z intronem 7 genu <strong>SMN2</strong>, blokując obecny tam supresor splicingu (ISS-N1). Wymusza to <strong>włączenie eksonu 7</strong> do transkryptu mRNA, produkując stabilne, pełnowartościowe białko SMN z genu zapasowego.</li>
-                        <li><i class="fa-solid fa-capsules"></i><span class="bullet-bold">Risdiplam (Evrysdi):</span> Drobnocząsteczkowy modyfikator splicingu SMN2 podawany <strong>doustnie</strong> w postaci syropu raz na dobę. Działa analogicznie do Nusinersenu – promuje włączenie eksonu 7 w pre-mRNA genu SMN2.</li>
-                    </ul>
-                </div>
-
-                <div class="hy-card warning">
-                    <span class="card-badge badge-ar">CRISPR & CAR-T</span>
-                    <h4>Edycja Genów in vivo (CRISPR/Cas9) & Terapie Komórkowe ex vivo</h4>
-                    <ul>
-                        <li><i class="fa-solid fa-scissors"></i><span class="bullet-bold">CRISPR/Cas9:</span> System precyzyjnego nacinania dwuniciowego DNA przy użyciu naprowadzającego gRNA (guide RNA) oraz endonukleazy Cas9. Pozwala na nokautowanie patogennych genów lub celowaną naprawę mutacji bezpośrednio w komórkach somatycznych pacjenta (np. w kuracji Casgevy dla niedokrwistości sierpowatej i beta-talasemii).</li>
-                        <li><i class="fa-solid fa-shield-halved"></i><span class="bullet-bold">Terapia CAR-T (ex vivo):</span> Limfocyty T pobrane od pacjenta są modyfikowane genetycznie poza ustrojem (za pomocą wektora lentywirusowego), aby syntetyzowały Chimeric Antigen Receptor (CAR) nakierowany przeciwko antygenom nowotworowym (np. CD19 w ostrej białaczce limfoblastycznej ALL). Modyfikowane komórki ulegają ekspansji i są z powrotem wprowadzane pacjentowi.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Zolgensma (Onasemnogen abeparwowek):</span> Jednorazowy wlew dożylny terapii genowej substytucyjnej (wektor <strong>AAV9</strong> niosący cDNA genu <strong>SMN1</strong>). Powikłanie: bezobjawowa <strong>hipertransaminazemia</strong> (wzrost ALT/AST), wymaga osłony sterydowej. <strong>W trakcie sterydoterapii pacjent ma zakaz przyjmowania szczepionek żywych!</strong> Szczepionki zabite można podawać.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Nusinersen (Spinraza):</span> Oligonukleotyd antysensowny (ASO) podawany dokanałowo. Modyfikuje splicing pre-mRNA genu zapasowego <strong>SMN2</strong>, wymuszając <strong>włączenie eksonu 7</strong>.</li>
+                        <li><i class="fa-solid fa-circle"></i><span class="bullet-bold">Upstaza:</span> Lek podawany w postaci precyzyjnej iniekcji neurochirurgicznej do <strong>skorupy (putamen)</strong> obustronnie w mózgowiu przy deficycie AADC.</li>
                     </ul>
                 </div>
             </div>
@@ -526,9 +417,8 @@
         <div id="matrix" class="content-tab">
             <div class="module-header">
                 <h1>Moduł 9: Kompletny Matrix Genetyczny</h1>
-                <p>Egzaminacyjne zestawienie porównawcze wszystkich jednostek chorobowych z sylabusu.</p>
+                <p>Egzaminacyjne zestawienie porównawcze wszystkich jednostek chorobowych z sylabusu SUM.</p>
             </div>
-
             <div class="table-container">
                 <table>
                     <thead>
@@ -543,91 +433,85 @@
                         <tr>
                             <td><strong>Choroba Huntingtona (HD)</strong></td>
                             <td>Gen <strong>HTT</strong> (4p16.3) / <strong>Autosomalne Dominujące (AD)</strong></td>
-                            <td>Zwyrodnienie neuronów gabaergicznych w prążkowiu (jądro ogoniaste). Triada: postępujące ruchy pląsawicze, otępienie poznawcze, zaburzenia psychiatryczne (afekt, depresja).</td>
-                            <td>Mutacja dynamiczna, ekspansja tripletów <strong>CAG (&gt;36)</strong>, zjawisko <strong>antycypacji w linii ojcowskiej</strong>, diagnostyka PCR.</td>
+                            <td>Zwyrodnienie neuronów gabaergicznych w jadrze ogoniastym. Ruchy pląsawicze, otępienie poznawcze, depresja.</td>
+                            <td>Mutacja dynamiczna, ekspansja tripletów <strong>CAG (&gt;36)</strong>, zjawisko <strong>antycypacji w linii ojcowskiej</strong>. PCR.</td>
                         </tr>
                         <tr>
                             <td><strong>Zwyrodnienie Barwnikowe Siatkówki (RP)</strong></td>
-                            <td>Heterogenne: gen <strong>RHO</strong> i inne / <strong>AD, AR lub XR</strong></td>
-                            <td>Pierwotna degeneracja pręcików. Postępujące zwężenie pola widzenia (widzenie tunelowe), bladość tarczy nerwu wzrokowego, ślepota.</td>
-                            <td><strong>Ślepota zmierzchowa ("kurza ślepota")</strong>, charakterystyczne <strong>złogi barwnika przypominające ciałka kostne</strong> w dnie oka, wygaszone ERG.</td>
+                            <td>Heterogenne: gen <strong>RHO</strong> / <strong>AD, AR lub XR</strong></td>
+                            <td>Pierwotna degeneracja pręcików. Postępujące widzenie tunelowe, bladość tarczy nerwu wzrokowego.</td>
+                            <td><strong>Ślepota zmierzchowa ("kurza ślepota")</strong>, charakterystyczne <strong>złogi barwnika przypominające ciałka kostne</strong>, wygaszone ERG.</td>
                         </tr>
                         <tr>
                             <td><strong>Leukodystrofia Metachromatyczna (MLD)</strong></td>
                             <td>Niedobór ARSA / <strong>Autosomalne Recesywne (AR)</strong></td>
-                            <td>Demielinizacja w OUN i obwodowym układzie nerwowym wskutek gromadzenia sulfatydów. Regres psychoruchowy, napady drgawkowe.</td>
-                            <td>Klasyczna triada: <strong>postępujące zaburzenia chodu, wiotkość przechodząca w spastyczność, regres rozwoju intelektualnego</strong>.</td>
+                            <td>Demielinizacja w OUN i obwodowym układzie nerwowym wskutek gromadzenia sulfatydów. Regres psychoruchowy, drgawki.</td>
+                            <td>Triada: <strong>postępujące zaburzenia chodu, wiotkość/spastyczność, regres rozwoju intelektualnego</strong>.</td>
                         </tr>
                         <tr>
                             <td><strong>Kraniosynostozy (Z. Aperta / Crouzona)</strong></td>
                             <td>Geny <strong>FGFR1, FGFR2, FGFR3</strong> / <strong>Autosomalne Dominujące (AD)</strong></td>
-                            <td>Przedwczesne zrastanie wybranych szwów czaszkowych prowadzące do deformacji czaszki (wieżowatość, asymetria), dysmorfii twarzy, wytrzeszczu gałek ocznych.</td>
-                            <td>Asymetryczny wzrost czaszki, syndaktylia (w zespole Aperta), mutacje w receptorach czynników wzrostu fibroblastów.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dystrofia Mięśniowa Duchenne'a / Beckera (DMD/BMD)</strong></td>
-                            <td>Gen dystrofiny (Xp21) / <strong>Sprzężone z chromosomem X Recesywne (XR)</strong></td>
-                            <td>Postępujący zanik i osłabienie mięśni szkieletowych, kardiomiopatia, pseudohipertrofia łydek, objaw Gowersa.</td>
-                            <td>Najczulszy marker biochemiczny we krwi: drastycznie podwyższona aktywność <strong>kinazy kreatynowej (CK)</strong>.</td>
+                            <td>Przedwczesne zrastanie wybranych szwów czaszkowych prowadzące do deformacji czaszki, dysmorfii twarzy, wytrzeszczu oczu.</td>
+                            <td>Asymetryczny wzrost czaszki, mutacje w receptorach czynników wzrostu fibroblastów.</td>
                         </tr>
                         <tr>
                             <td><strong>Zespół Downa</strong></td>
                             <td>Trisomia 21 / <strong>Aberracja liczbowa</strong></td>
-                            <td>Hipotonia, płaska twarz, fałd nakątny, plamki na tęczówce, makroglosja, podniebienie gotyckie, bruzdy dłoniowa i sandałowa, skóra marmurkowata.</td>
-                            <td>Wada serca <strong>AVSD</strong>, nadekspresja genów <em>DYRK1A</em> i <em>APP</em>, wczesny Alzheimer, ryzyko białaczki AMKL.</td>
+                            <td>Hipotonia, płaska twarz, fałd nakątny, plamki na tęczówce, makroglosja, bruzdy dłoniowa i sandałowa.</td>
+                            <td>Wada serca <strong>AVSD</strong>, nadekspresja genów <em>DYRK1A</em> i <em>APP</em>, wczesny Alzheimer, ryzyko AMKL.</td>
                         </tr>
                         <tr>
                             <td><strong>Z. Beckwitha-Wiedemanna</strong></td>
                             <td>11p15.5 / <strong>Imprinting (IGF2, CDKN1C)</strong></td>
-                            <td>Makrosomia (duża masa urodzeniowa), makroglosja, przepuklina pępowinowa (omphalocele), bruzdy na płatkach usznych, jednostronny przerost ciała.</td>
-                            <td>Skrajnie wysokie ryzyko nowotworzenia zarodkowego (<strong>Guz Wilmsa</strong>, hepatoblastoma). Często UPD matczyna lub defekt metylacji IC1/IC2.</td>
+                            <td>Makrosomia, makroglosja, przepuklina pępowinowa (omphalocele), bruzdy na płatkach usznych, połowiczy przerost ciała.</td>
+                            <td>Skrajnie wysokie ryzyko nowotworzenia zarodkowego (<strong>Guz Wilmsa</strong>, hepatoblastoma). Regularne USG jamy brzusznej.</td>
                         </tr>
                         <tr>
                             <td><strong>Zespół Turnera</strong></td>
                             <td>45,X / <strong>Monosomia (Aberracja liczbowa)</strong></td>
-                            <td>Niski wzrost, płetwiasta szyja, szeroka klatka piersiowa, obrzęki limfatyczne rąk i stóp noworodka, niska linia włosów.</td>
-                            <td><strong>Jajniki pasmowate</strong>, pierwotny brak miesiączki, koarktacja aorty (CoA), nerka podkowiasta. Wyłącznie u kobiet.</td>
+                            <td>Niski wzrost, płetwiasta szyja, szeroka klatka piersiowa, obrzęki limfatyczne noworodka.</td>
+                            <td><strong>Jajniki pasmowate</strong>, pierwotny brak miesiączki, koarktacja aorty (CoA), nerka podkowiasta. U kobiet.</td>
                         </tr>
                         <tr>
                             <td><strong>Zespół DiGeorge'a</strong></td>
                             <td>del 22q11.2 / <strong>Autosomalne Dominujące (AD / de novo)</strong></td>
-                            <td>Wady stożkowo-pniowe serca, rozszczep podniebienia, dysmorfia, hipoplazja grasicy i przytarczyc.</td>
-                            <td><strong>Akronim CATCH-22</strong>, drgawki noworodkowe wywołane ciężką hipokalcemią, niedobory odporności T-komórkowej.</td>
+                            <td>Wady serca (tetralogia Fallota), rozszczep podniebienia, hipoplazja grasicy i przytarczyc.</td>
+                            <td><strong>Akronim CATCH-22</strong>, drgawki noworodkowe wywołane ciężką hipokalcemią, niedobory grasicze T.</td>
                         </tr>
                         <tr>
                             <td><strong>Zespół Angelmana</strong></td>
-                            <td>15q11-q13 mat / <strong>Defekt Imprintingu matczynego (UBE3A)</strong></td>
+                            <td>15q11-q13 mat / <strong>Defekt Imprintingu (UBE3A)</strong></td>
                             <td>Ciężka niepełnosprawność intelektualna, brak mowy, ataksja, chód kukiełkowy, padaczka.</td>
-                            <td><strong>Happy Puppet Syndrome</strong>, napady niekontrolowanego, paroksyzmalnego śmiechu, fascynacja wodą.</td>
+                            <td><strong>Happy Puppet Syndrome</strong>, napady niekontrolowanego śmiechu, fascynacja wodą. Utrata kopii matczynej.</td>
                         </tr>
                         <tr>
                             <td><strong>Zespół Pradera-Willego</strong></td>
-                            <td>15q11-q13 pat / <strong>Defekt Imprintingu ojcowskiego (SNRPN)</strong></td>
+                            <td>15q11-q13 pat / <strong>Defekt Imprintingu (SNRPN)</strong></td>
                             <td>Wiotkość noworodkowa, małe dłonie/stopy, hipogonadyzm, opóźnienie rozwoju intelektualnego.</td>
-                            <td><strong>Niepohamowany głód (hiperfagia)</strong>, chorobliwa otyłość od wczesnego dzieciństwa, napady złości o jedzenie.</td>
+                            <td><strong>Niepohamowany głód (hiperfagia)</strong>, chorobliwa otyłość od dzieciństwa. Utrata kopii ojcowskiej.</td>
                         </tr>
                         <tr>
                             <td><strong>Zespół Li-Fraumeni</strong></td>
                             <td>Gen <strong>TP53</strong> (17p13.1) / <strong>Autosomalne Dominujące (AD)</strong></td>
-                            <td>Brak specyficznych wad dysmorficznych. Charakteryzuje się masową zachorowalnością na nowotwory w rodzinie.</td>
-                            <td>Wielopoziomowa predyspozycja, wczesne mięsaki, rak piersi, guzy mózgu, raki kory nadnerczy u dzieci.</td>
+                            <td>Brak specyficznych wad dysmorficznych. Agregacje zachorowań na nowotwory u młodych osób w rodzinie.</td>
+                            <td>Wielopoziomowa predyspozycja, wczesne mięsaki, rak piersi, guzy mózgu. Germinalna mutacja supresora TP53.</td>
                         </tr>
                         <tr>
-                            <td><strong>Zespół MEN2 (2A i 2B)</strong></td>
+                            <td><strong>Zespół MEN2</strong></td>
                             <td>Protoonkogen <strong>RET</strong> (10q11.2) / <strong>Autosomalne Dominujące (AD)</strong></td>
                             <td>MEN2B: marfanoidalny pokrój ciała, ganglioneuromatoza języka i warg. MEN2A: bez cech szkieletowych.</td>
-                            <td><strong>Mutacja gain-of-function onkogenu</strong>, 100% ryzyko <strong>raka rdzeniastego tarczycy</strong>, profilaktyczna tyreoidektomia niemowląt.</td>
+                            <td><strong>Mutacja gain-of-function onkogenu RET</strong>, 100% ryzyko <strong>raka rdzeniastego tarczycy</strong>, tyreoidektomia.</td>
                         </tr>
                         <tr>
                             <td><strong>Fenyloketonuria (PKU)</strong></td>
                             <td>Gen <strong>PAH</strong> (12q23.2) / <strong>Autosomalne Recesywne (AR)</strong></td>
                             <td>Nieleczona: małogłowie, padaczka, zachowania autystyczne, odbarwienie skóry i włosów (blondyni).</td>
-                            <td><strong>Mysi zapach moczu</strong>, blok hydroksylazy fenyloalaninowej, natychmiastowe leczenie dietą eliminacyjną zapobiega otępieniu.</td>
+                            <td><strong>Mysi zapach moczu</strong>, blok hydroksylazy fenyloalaninowej, natychmiastowe leczenie dietą eliminacyjną.</td>
                         </tr>
                         <tr>
                             <td><strong>Alkaptonuria</strong></td>
                             <td>Gen <strong>HGD</strong> (3q21.3) / <strong>Autosomalne Recesywne (AR)</strong></td>
-                            <td>Ochronoza (niebiesko-czarne zabarwienie uszu, twardówek), ciężkie i destrukcyjne zapalenie stawów w młodym wieku.</td>
+                            <td>Ochronoza (ciemne chrząstki uszu, twardówek), ciężkie i destrukcyjne zapalenie stawów w młodym wieku.</td>
                             <td><strong>Mocz ciemnieje i czarnieje po kontakcie z powietrzem</strong>, akumulacja kwasu homogentyzynowego.</td>
                         </tr>
                         <tr>
@@ -639,7 +523,7 @@
                         <tr>
                             <td><strong>Zespół Marfana</strong></td>
                             <td>Gen <strong>FBN1</strong> (15q21.1) / <strong>Autosomalne Dominujące (AD)</strong></td>
-                            <td>Wysoki wzrost, arachnodaktylia (palce pająka), klatka piersiowa lejkowata, skolioza.</td>
+                            <td>Wysoki wzrost, pająkowatość palców, klatka piersiowa lejkowata, skolioza.</td>
                             <td><strong>Tętniak i rozwarstwienie aorty wstępującej</strong>, podwichnięcie soczewki oka (ectopia lentis górno-skroniowa).</td>
                         </tr>
                     </tbody>
@@ -650,7 +534,7 @@
         <div id="flashcards" class="content-tab">
             <div class="module-header">
                 <h1>Interaktywny Trener Fiszkowy</h1>
-                <p>Kliknij fiszkę, aby zobaczyć odpowiedź. Używaj przycisków sterowania, by przechodzić dalej.</p>
+                <p>Kliknij fiszkę, aby odwrócić i zobaczyć odpowiedź. Używaj przycisków nawigacyjnych do płynnego treningu.</p>
             </div>
             <div class="interactive-container">
                 <div class="flashcard-box" id="cardElement" onclick="flipCard()">
@@ -675,8 +559,8 @@
 
         <div id="exam" class="content-tab">
             <div class="module-header">
-                <h1>Oficjalny Symulator Bazy Egzaminacyjnej</h1>
-                <p>Sprawdź swoją wiedzę w starciu z autentycznymi pytaniami testowymi. Po wybraniu odpowiedzi zobaczysz kliniczny komentarz.</p>
+                <h1>Oficjalny Symulator Bazy Egzaminacyjnej SUM</h1>
+                <p>Sprawdź swoją wiedzę w starciu z autentycznymi pytaniami testowymi z bazy kół i zaliczeń końcowych.</p>
             </div>
             <div class="exam-stats">
                 <div><div class="stat-val" id="currentQNum">1/59</div><div class="stat-label">Pytanie</div></div>
@@ -717,13 +601,11 @@
                 </div>
                 <button onclick="toggleAIChat()" style="background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 16px;"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            
             <div id="ai-messages" style="flex: 1; padding: 15px; overflow-y: auto; background: #f8fafc; font-size: 13px; display: flex; flex-direction: column; gap: 10px;">
                 <div style="background: #e2e8f0; color: #1e293b; padding: 10px 14px; border-radius: 12px 12px 12px 0; align-self: flex-start; max-width: 85%;">
                     Cześć Max! Jestem Twoim prywatnym botem egzaminacyjnym. Zapytaj mnie o dowolną chorobę, mutację, gen, albo słowo kluczowe ze skryptu, a błyskawicznie znajdę dla Ciebie odpowiedzi i wyjaśnienia. O co chcesz zapytać?
                 </div>
             </div>
-
             <div style="padding: 12px; background: white; border-top: 1px solid #e2e8f0; display: flex; gap: 8px;">
                 <input type="text" id="ai-user-input" onkeypress="handleAIPress(event)" placeholder="Wpisz np. Zolgensma, LCA, WES, chromosomalne..." style="flex: 1; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none;" />
                 <button onclick="askAIAssistant()" style="background: #0d9488; color: white; border: none; padding: 0 16px; border-radius: 8px; cursor: pointer; font-size: 14px;"><i class="fa-solid fa-paper-plane"></i></button>
@@ -737,7 +619,10 @@
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             
             const selectedTab = document.getElementById(tabId);
-            if(selectedTab) selectedTab.classList.add('active');
+            if(selectedTab) {
+                selectedTab.classList.add('active');
+                selectedTab.style.display = "block";
+            }
             
             const clickedNavItem = Array.from(document.querySelectorAll('.nav-item')).find(item => item.getAttribute('onclick').includes(tabId));
             if(clickedNavItem) clickedNavItem.classList.add('active');
@@ -750,7 +635,7 @@
                 let text = card.innerText.toLowerCase();
                 if (text.includes(input)) {
                     card.style.display = "block";
-                    if(card.parentElement) card.parentElement.style.display = "";
+                    if(card.parentElement) card.parentElement.style.display = "grid";
                 } else {
                     card.style.display = "none";
                 }
@@ -760,15 +645,15 @@
                 if (row.parentElement && row.parentElement.tagName === 'THEAD') return;
                 let text = row.innerText.toLowerCase();
                 if (text.includes(input)) {
-                    row.style.display = "";
+                    row.style.display = "table-row";
                 } else {
                     row.style.display = "none";
                 }
             });
 
             if (input === "") {
-                document.querySelectorAll('.hy-card').forEach(card => card.style.display = "");
-                document.querySelectorAll('tbody tr').forEach(row => row.style.display = "");
+                document.querySelectorAll('.hy-card').forEach(card => card.style.display = "block");
+                document.querySelectorAll('tbody tr').forEach(row => row.style.display = "table-row");
                 let activeTab = document.querySelector('.nav-item.active');
                 if(activeTab) {
                     let onclickAttr = activeTab.getAttribute('onclick');
@@ -777,8 +662,8 @@
                 }
             } else {
                 document.querySelectorAll('.content-tab').forEach(tab => {
-                    let hasVisibleCard = tab.querySelectorAll('.hy-card[style*="display: block"]').length > 0;
-                    let hasVisibleRow = tab.querySelectorAll('tbody tr:not([style*="display: none"])').length > 0;
+                    let hasVisibleCard = Array.from(tab.querySelectorAll('.hy-card')).some(c => c.style.display !== "none");
+                    let hasVisibleRow = Array.from(tab.querySelectorAll('tbody tr')).some(r => r.style.display !== "none" && r.parentElement.tagName !== 'THEAD');
                     if (hasVisibleCard || hasVisibleRow) {
                         tab.style.display = "block";
                         tab.classList.add('active');
@@ -793,21 +678,21 @@
         // --- FULL 59 QUESTIONS EXAM DATABASE ---
         const examQuestionsBaza = [
             { q: "Wymiana materiału genetycznego między chromosomami homologicznymi (crossing-over) zachodzi w mejozie podczas:", opts: ["profazy I", "metafazy I", "anafazy I", "metafazy II", "anafazy II"], corr: 0, rationale: "Crossing-over zachodzi wyłącznie w pachytenie profazy I mejozy, kiedy sparowane chromosomy homologiczne tworzą biwalenty." },
-            { q: "Wśród substytucji pojedynczej pary zasad zmieniających sekwencję kodowanych aminokwasów można wyróżnić mutacje, które:", opts: ["zmieniają jeden aminokwas na inny", "wprowadzają jeden z trzech kodonów stop do mRNA", "zmieniają ramkę odczytu", "prawidłowe A,B", "prawidłowe A,B,C"], corr: 0, rationale: "Pytanie precyzuje mutacje zmieniające aminokwas na inny (missense). Wprowadzenie kodonu stop to mutacja nonsensowna, a zmiana ramki odczytu wynika z insercji/delecji, a nie prostej substytucji pojedynczej pary zasad zmieniającej aminokwas." },
-            { q: "Guz Wilmsa to nowotwór złośliwy zlokalizowany w:", opts: ["trzustce", "śledzionie", "nerce", "płucu", "żadne z powyższych"], corr: 2, rationale: "Guz Wilmsa (nerczak płodowy) to najczęstszy złośliwy nowotwór nerek u dzieci, związany z genem WT1." },
-            { q: "Do genów supresorowych nowotworów NIE zalicza się:", opts: ["RB1", "TP53", "MYC", "APC", "wszystkie powyższe to geny supresorowe"], corr: 2, rationale: "MYC to klasyczny protoonkogen, którego nadekspresja stymuluje proliferację. RB1, TP53 i APC to geny supresorowe." },
-            { q: "Zespół Ushera jest przykładem choroby:", opts: ["ograniczonej wyłącznie do narządu wzroku", "sprzężonej z chromosomem Y", "łączącej retinopatię barwnikową z głuchotą", "powodowanej mutacją genu RB1", "dziedziczonej mitochondrialnie"], corr: 2, rationale: "Zespół Ushera łączy wrodzony niedosłuch czuciowo-nerwowy z postępującym zwyrodnieniem barwnikowym siatkówki (retinitis pigmentosa)." },
+            { q: "Wśród substytucji pojedynczej pary zasad zmieniających sekwencję kodowanych aminokwasów można wyróżnić mutacje, które:", opts: ["zmieniają jeden aminokwas na inny", "wprowadzają jeden z trzech kodonów stop do mRNA", "zmieniają ramkę odczytu", "prawidłowe A,B", "prawidłowe A,B,C"], corr: 3, rationale: "Substytucje punktowe obejmują mutacje zmiany sensu (zamiana jednego aminokwasu w inny) oraz mutacje nonsensowne (wprowadzające kodon STOP). Mutacja zmiany ramki odczytu to rearanżacja strukturalna typu insercja/delecja." },
+            { q: "Guz Wilmsa to nowotwór:", opts: ["trzustki", "śledziony", "nerce", "płuca", "żadne z powyższych"], corr: 2, rationale: "Guz Wilmsa (nephroblastoma) to zlośliwy nowotwór zarodkowy nerek wieku dziecięcego związany z defektami genu WT1." },
+            { q: "Do genów supresorowych nowotworów nie zalicza się:", opts: ["RB1", "TP53", "MYC", "APC", "wszystkie powyższe to geny supresorowe"], corr: 2, rationale: "MYC to klasyczny protoonkogen, którego nadekspresja stymuluje proliferację komórkową. Pozostałe to geny supresorowe." },
+            { q: "Zespół Ushera jest przykładem choroby:", opts: ["ograniczonej wyłącznie do narządu wzroku", "sprzężonej z chromosomem Y", "łączącej retinopatię barwnikową z głuchotą", "powodowanej mutacją genu RB1", "dziedziczonej mitochondrialnie"], corr: 2, rationale: "Zespół Ushera to AR rzęskopatia (ciliopatia) łącząca niedosłuch czuciowo-nerwowy z postępującym retinitis pigmentosa." },
             { q: "Zaburzenia chodu, osłabienie mięśniowe, opóźnienie rozwoju psychoruchowego oraz napady drgawkowe to triada objawów charakterystyczna dla:", opts: ["leukodystrofii metachromatycznej", "choroby Huntingtona", "alkaptonurii", "zespołu Downa", "zespołu Marfana"], corr: 0, rationale: "Leukodystrofia metachromatyczna (MLD) niszczy osłonki mielinowe, dając charakterystyczny regres psychoruchowy, wiotkość/spastyczność i drgawki." },
             { q: "Która z poniższych chorób NIE JEST dziedziczona w sposób sprzężony z chromosomem X?", opts: ["dystrofia mięśniowa Duchenne'a", "hemofilia A", "mukowiscydoza", "zespół łamliwego chromosomu X", "daltonizm"], corr: 2, rationale: "Mukowiscydoza jest klasyczną chorobą autosomalną recesywną (AR) wywołaną mutacją genu CFTR na chromosomie 7." },
             { q: "Najczulszym markerem biochemicznym oznaczanym we krwi obwodowej w diagnostyce dystrofii mięśniowej Duchenne'a (DMD) jest:", opts: ["aminotransferaza alaninowa (ALT)", "kinaza kreatynowa (CK)", "dehydrogenaza mleczanowa (LDH)", "alfa-fetoproteina (AFP)", "fosfataza alkaliczna (ALP)"], corr: 1, rationale: "Aktywność kinazy kreatynowej (CK) w surowicy u chłopców z DMD jest drastycznie podwyższona (nawet kilkadziesiąt razy ponad normę) z powodu destrukcji błon komórek mięśniowych." },
             { q: "Przedwczesne zarastanie niektórych szwów czaszkowych, prowadzące do asymetrycznego i nieprawidłowego wzrostu czaszki to:", opts: ["kraniosynostoza", "wodogłowie", "małogłowie", "makrocefalia", "makrosomia"], corr: 0, rationale: "Kraniosynostozy to wady układu kostnego (np. zespoły Aperta lub Crouzona) spowodowane przedwczesnym zrastaniem szwów czaszkowych pod wpływem mutacji FGFR." },
-            { q: "Mocz, który ciemnieje i staje się niemal czarny po kontakcie z powietrzem atmosphericznym, to patognomoniczna cecha:", opts: ["fenyloketonurii", "alkaptonurii", "albinizmu", "zespołu DiGeorge'a", "zespołu Williamsa"], corr: 1, rationale: "W alkaptonurii brak dioksygenazy homogentyzynowej prowadzi do wydalania kwasu homogentyzynowego, który utlenia się na powietrzu, dając czarne zabarwienie moczu." },
-            { q: "Wskaż prawidłowe stwierdzenie dotyczące sekwencjonowania całoeksomowego (WES):", opts: ["WES pozwala bez problemu wykryć mutacje dynamiczne", "WES analizuje sekwencje kodujące (eksony) wszystkich genów", "Ujemny wynik WES w 100% wyklucza podłoże genetyczne", "WES służy głównie do wykrywania dużych delecji chromosomowych", "WES nie wymaga użycia technik NGS"], corr: 1, rationale: "WES sekwencjonuje eksony (obszary kodujące). Nie wykrywa dobrze mutacji dynamicznych, dużych rearanżacji, a wynik ujemny nie wyklucza zmian w regionach niekodujących lub regulatorowych." },
+            { q: "Mocz, który ciemnieje i staje się niemal czarny po kontakcie z powietrzem atmosferycznym, to patognomoniczna cecha:", opts: ["fenyloketonurii", "alkaptonurii", "albinizmu", "zespołu DiGeorge'a", "zespołu Williamsa"], corr: 1, rationale: "W alkaptonurii brak dioksygenazy homogentyzynowej prowadzi do wydalaniem kwasu homogentyzynowego, który utlenia się na powietrzu, dając czarne zabarwienie moczu." },
+            { q: "Wskaż prawidłowe stwierdzenie dotyczące sekwencjonowania całoeksomowe (WES):", opts: ["WES pozwala bez problemu wykryć mutacje dynamiczne", "WES analizuje sekwencje kodujące (eksony) wszystkich genów", "Ujemny wynik WES w 100% wyklucza podłoże genetyczne", "WES służy głównie do wykrywania dużych delecji chromosomowych", "WES nie wymaga użycia technik NGS"], corr: 1, rationale: "WES sekwencjonuje eksony (obszary kodujące). Nie wykrywa dobrze mutacji dynamicznych, dużych rearanżacji, a wynik ujemny nie wyklucza zmian w regionach niekodujących lub regulatorowych." },
             { q: "Najczęstszym działaniem niepożądanym obserwowanym u pacjentów po podaniu terapii genowej onasemnogen abeparwowek (Zolgensma) jest:", opts: ["ostra niewydolność nerek", "głęboka małopłytkowość", "bezobjawowa hipertransaminazemia", "wyłysienie", "zapalenie opon mózgowo-rdzeniowych"], corr: 2, rationale: "Zolgensma (wektor AAV9) wywołuje przejściową odpowiedź zapalną w wątrobie, objawiającą się wzrostem transaminaz (ALT/AST), co wymaga profilaktycznej terapii sterydowej." },
             { q: "Jakie jest zalecenie dotyczące szczepień ochronnych u pacjenta w trakcie sterydoterapii po podaniu leku Zolgensma?", opts: ["Można normalnie stosować wszystkie szczepionki żywe i zabite", "Pacjent jest zdyskwalifikowany ze szczepień żywych do czasu zakończenia sterydoterapii, szczepionki zabite mogą być stosowane", "Nie wolno podawać absolutnie żadnych szczepionek, w tym zabitych", "Należy natychmiast zaszczepić pacjenta przeciwko wszystkim wirusom szczepionkami żywymi", "Sterydoterapia nie ma żadnego wpływu na profil szczepień ochronnych"], corr: 1, rationale: "W trakcie intensywnej sterydoterapii pacjent jest w stanie immunosupresji, co bezwzględnie dyskwalifikuje go ze szczepień żywych. Szczepionki inaktywowane (zabite) są bezpieczne." },
-            { q: "Terapia genowa Upstaza (eladokagen eksuparwowek) jest zaawansowanym produktem leczniczym podawanym:", opts: ["we wlewie dożylnym przez 1 godzinę", "w postaci precyzyjnej iniekcji neurochirurgicznej bilateralnie do skorupy mózgu", "podsiatkówkowo do gałki ocznej", "doustnie raz na dobę w syropie", "głęboko domięśniowo co 4 tygodnie"], corr: 1, rationale: "Upstaza, lecząca niedobór AADC, wprowadzana jest bezpośrednio do struktur mózgowia (skorupa — putamen) za pomocą precyzyjnego zabiegu stereotaktycznego." },
+            { q: "Terapia genowa Upstaza (eladokagen eksuparwowek) jest zaawansowanym produktem leczniczym podawanym:", opts: ["we wlewie dożylnego przez 1 godzinę", "w postaci precyzyjnej iniekcji neurochirurgicznej bilateralnie do skorupy mózgu", "podsiatkówkowo do gałki ocznej", "doustnie raz na dobę w syropie", "głęboko domięśniowo co 4 tygodnie"], corr: 1, rationale: "Upstaza, lecząca niedobór AADC, wprowadzana jest bezpośrednio do struktur mózgowia (skorupa — putamen) za pomocą precyzyjnego zabiegu stereotaktycznego." },
             { q: "Jeśli pacjent rodzi się z ciężką chorobą genetyczną o dziedziczeniu autosomalnym dominującym, która nie występowała wcześniej w rodzinie (czysta mutacja de novo), co jest prawdą?", opts: ["Allele w locus w innych komórkach linii płciowej rodziców będą w większości prawidłowe", "Rodzeństwo tego pacjenta ma 50% ryzyka ponownego odziedziczenia tej choroby", "Choroba ta nie będzie przekazywana przez pacjenta jego własnemu potomstwu", "Mutacja ta na pewno powstała pod wpływem czynników mutagennych w ciąży", "Wszyscy członkowie rodziny muszą być nosicielami utajonymi"], corr: 0, rationale: "Mutacja de novo powstaje w pojedynczej komórce płciowej jednego z rodziców lub na etapie zygoty. Pozostałe komórki linii płciowej rodziców są prawidłowe, więc ryzyko dla rodzeństwa jest równe ryzyku populacyjnemu." },
-            { q: "Głównym celem metody GWAS (badania asocjacyjne w całym genomie) jest:", opts: ["ilościowa ocena wielkości poszczególnych eksonów", "sekwencjonowanie transkryptów mRNA u pacjentów onkologicznych", "porównywanie częstości wariantów SNP między grupą chorych a kontrolną", "wykrywanie mikrodelecji subtelomerowych w mikromacierzach", "diagnostyka mozaicyzmu u pacjentów z zespołem Turnera"], corr: 2, rationale: "GWAS polega na skanowaniu markerów SNP w całych genomach dużych grup ludzi w celu znalezienia wariantów częstszych u osób chorych niż u zdrowych." },
+            { q: "Glowym celem metody GWAS (badania asocjacyjne w całym genomie) jest:", opts: ["ilościowa ocena wielkości poszczególnych eksonów", "sekwencjonowanie transkryptów mRNA u pacjentów onkologicznych", "porównywanie częstości wariantów SNP między grupą chorych a kontrolną", "wykrywanie mikrodelecji subtelomerowych w mikromacierzach", "diagnostyka mozaicyzmu u pacjentów z zespołem Turnera"], corr: 2, rationale: "GWAS polega na skanowaniu markerów SNP w całych genomach dużych grup ludzi w celu znalezienia wariantów częstszych u osób chorych niż u zdrowych." },
             { q: "Zjawisko antycypacji, czyli wcześniejszego ujawniania się objawów i ich cięższego przebiegu w kolejnych pokoleniach, zachodzi w chorobie Huntingtona wybitnie podczas przekazywania zmutowanego allelu w linii:", opts: ["matczynej", "ojcowskiej", "zarówno matczynej jak i ojcowskiej z tą samą częstotliwością", "wyłącznie przez dziadka ze strony matki", "mitochondrialnej"], corr: 1, rationale: "W chorobie Huntingtona wydłużenie niestabilnego bloku powtórzeń CAG (ekspansja) zachodzi znacznie silniej podczas spermatogenezy, stąd antycypacja dotyczy linii ojcowskiej." },
             { q: "Nusinersen (Spinraza) stosowany w leczeniu SMA to oligonukleotyd antysensowny (ASO), którego mechanizm polega na:", opts: ["całkowitym wyciszeniu ekspresji genu SMN2", "wprowadzeniu sprawnej kopii genu SMN1 za pomocą wektora lentywirusowego", "modyfikacji splicingu pre-mRNA genu SMN2 w celu włączenia eksonu 7", "wybiórczym niszczeniu zmutowanych motoneuronów", "blokowaniu receptorów dla neurotoksyn w synapsach"], corr: 2, rationale: "Nusinersen wiąże się ze specyficznym regionem w intronie 7 pre-mRNA SMN2, zmieniając splicing tak, by ekson 7 nie był pomijany, co pozwala na produkcję pełnowartościowego białka SMN." },
             { q: "Sześć lub więcej plam typu cafe-au-lait o średnicy powyżej 5 mm przed pokwitaniem oraz obecność dwóch lub więcej guzków Lischa na tęczówce pozwala rozpoznać:", opts: ["neurofibromatozę typu 1 (NF1)", "zespół Marfana", "zespół Li-Fraumeni", "zespół DiGeorge'a", "stwardnienie guzowate"], corr: 0, rationale: "To flagowe kryteria kliniczne NIH dla rozpoznania neurofibromatozy typu 1 (choroby von Recklinghausena)." },
@@ -825,35 +710,39 @@
             { q: "Który z poniższych genów koduje neurofibrominę, białko będące supresorem szlaku sygnalizacyjnego RAS?", opts: ["NF1", "FBN1", "TP53", "WT1", "RB1"], corr: 0, rationale: "Gen NF1 (17q11.2) koduje neurofibrominę, która działa jako GAP (GTPase-activating protein) wygaszający aktywność onkogennego szlaku RAS." },
             { q: "Ciężka hipokalcemia u noworodka prowadząca do napadów drgawkowych, połączona z wadą stożkowo-pniową serca i aplazją grasicy naprowadza na rozpoznanie:", opts: ["zespołu DiGeorge'a", "zespołu Williamsa", "zespołu Turnera", "zespołu Pataua", "alkaptonurii"], corr: 0, rationale: "Aplazja trzeciej i czwartej kieszonki gardłowej skutkuje brakiem grasicy i przytarczyc, co jest podłożem zespołu DiGeorge'a." },
             { q: "Zaburzenie składania pre-mRNA (splicingu) poprzez celowane użycie oligonukleotydów antysensownych (ASO) ma fundamentalne zastosowanie w terapii farmakologicznej:", opts: ["rdzeniowego zaniku mięśni (SMA) lekiem Nusinersen", "wrodzonej ślepoty Lebera lekiem Luxturna", "deficytu AADC lekiem Upstaza", "choroby Huntingtona", "alkaptonurii"], corr: 0, rationale: "Nusinersen to sztandarowy model leku typu ASO, modyfikujący splicing pre-mRNA genu SMN2." },
-            { q: "Gen FBN1 zlokalizowany na chromosomie 15q21.1 koduje:", opts: ["fibrylinę-1", "dystrofinę", "huntingtynę", "tyrozynazę", "neurofibrominę"], corr: 0, rationale: "Mutacje genu fibryliny-1 (FBN1) upośledzają strukturę mikrofibryl tkanki łącznej, prowadząc do zespołu Marfana." },
-            { q: "Ryzyko powtórzenia się choroby uwarunkowanej wieloczynnikowo w danej rodzinie:", opts: ["jest zawsze stałe i wynosi 25%", "jest stałe i wynosi 50%", "wzrasta, jeśli większa liczba członków rodziny jest dotknięta chorobą", "maleje wraz z wiekiem rodziców", "wynika wyłącznie z mutacji w linii mitochondrialnej"], corr: 2, rationale: "W dziedziczeniu wieloczynnikowym (wielogenowym + środowiskowym) empiryczne ryzyko nawrotu rośnie wraz z liczbą chorych krewnych oraz ciężkością ich fenotypu." },
-            { q: "Które z poniższych wskazań NIE JEST klasycznym powodem do wykonania inwazyjnej diagnostyki prenatalnej (np. amniopunkcji)?", opts: ["wiek matki powyżej 35 lat", "urodzenie w poprzedniej ciąży dziecka z aberracją chromosomową", "nieprawidłowy wynik nieinwazyjnego przesiewowego testu prenatalnego (np. NIPT)", "rodzinne występowanie choroby genetycznej możliwej do zdiagnozowania prenatalnie", "pierwsza prawidłowa ciąża u kobiety w wieku 23 lat bez obciążeń w wywiadzie"], corr: 4, rationale: "Młody wiek matki bez jakichkolwiek obciążeń rodzinnych i przy prawidłowych wynikach badań przesiewowych USG/testu podwójnego nie stanowi wskazania do inwazyjnych procedur wiążących się z ryzykiem poronienia." },
-            { q: "Metoda aCGH (porównawcza hybrydyzacja genomowa do mikromacierzy) pozwala na wykrycie:", opts: ["zrównoważonych translokacji chromosomowych", "submikroskopowych zmian ilościowych DNA (CNV - delecji/duplikacji)", "inwersji pericentrycznych bez utraty materiału", "punktowych mutacji typu missense w pojedynczych genach", "polimorfizmów długości fragmentów restrykcyjnych"], corr: 1, rationale: "aCGH doskonale wykrywa asymetrię ilościową (delecje i duplikacje — submikroskopowe CNV), ale jest ślepa na mutacje punktowe oraz rearanżacje w pełni zrównoważone strukturalnie." },
-            { q: "Zgrupowania barwnika w dnie oka przypominające ciałka kostne oraz postępujące zwężenie pola widzenia aż do stadium widzenia tunelowego to obraz:", opts: ["Zwyrodnienia barwnikowego siatkówki (Retinitis Pigmentosa)", "Glejaka nerwu wzrokowego", "Zwichnięcia soczewki", "Zaćmy wrodzonej", "Bielactwa oczno-skórnego"], corr: 0, rationale: "Są to klasyczne, podręcznikowe objawy uszkodzenia pręcików w przebiegu Retinitis Pigmentosa." },
-            { q: "Wskaż gen ulegający mutacji we wrodzonej ślepocie Lebera, odpowiedzialny za prawidłowy metabolizm witaminy A w siatkówce:", opts: ["RPE65", "HTT", "PAH", "RET", "WT1"], corr: 0, rationale: "Gen RPE65 koduje izomerylohydrolazę nabłonka barwnikowego siatkówki, kluczową w cyklu regeneracji rodopsyny z witaminy A." },
-            { q: "W zespole Edwardsa (trisomia 18) charakterystyczną cechą wyglądu stóp noworodka jest:", opts: ["bruzda sandałowa", "polidaktylia pozaosiowa", "stopy o zaokrąglonej podeszwie (stopy kołyskowe)", "syndaktylia III i IV palca", "wrodzony brak stóp"], corr: 2, rationale: "Stopy kołyskowe (rocker-bottom feet) to obok specyficznie zaciśniętych dłoni najważniejszy ortopedyczny marker fenotypowy zespołu Edwardsa." },
-            { q: "Nieleczona fenyloketonuria charakteryzuje się niepełnosprawnością intelektualną oraz specyficznym zapachem moczu, opisywanym jako zapach:", opts: ["mysi", "zgniłych jabłek", "syropu klonowego", "spalonej gumy", "świeżego pieczywa"], corr: 0, rationale: "Mysi zapach moczu (lub zapach potu/skóry) wynika z obecności dużych ilości kwasu fenylopirogronowego i jego metabolitów." },
-            { q: "Główną przyczyną zespołu Angelmana jest utrata funkcji matczynej kopii regionu 15q11-q13. Najczęstszym mechanizmem molekularnym (ok. 70% przypadków) jest:", opts: ["jednorodzicielska disomia ojcowska (UPD)", "delecja fragmentu chromosomu pochodzenia matczynego", "mutacja punktowa w genie SNRPN", "izochromosom matczyny", "translokacja robertsonowska"], corr: 1, rationale: "Delecja matczyna regionu 15q11-q13 odpowiada za większość przypadków zespołu Angelmana, na drugim miejscu plasuje się UPD ojcowska." },
-            { q: "Który z wymienionych zespołów klinicznych wiąże się ze skrajnie podwyższonym ryzykiem rozwoju nowotworów zarodkowych, zwłaszcza guza Wilmsa oraz hepatoblastoma w dzieciństwie?", opts: ["Zespół Beckwitha-Wiedemanna", "Zespół Turnera", "Zespół DiGeorge'a", "Alkaptonuria", "Choroba Huntingtona"], corr: 0, rationale: "Zespół Beckwitha-Wiedemanna (BWS) to zespół przerostowy związany z zaburzeniem imprintingu 11p15.5. Pacjenci wymagają regularnego screeningu USG i AFP z powodu ryzyka guzów embrionalnych." },
-            { q: "Technika FISH (Fluorescent In Situ Hybridization) opiera się bezpośrednio na zjawisku:", opts: ["amplifikacji enzymatycznej DNA", "hybrydyzacji znakowanych sond fluorescencyjnych z komplementarną sekwencją kwasu nukleoinowego", "rozdziału elektroforetycznego białek", "pomiaru natężenia światła rozproszonego", "centryfugowania gradientowego"], corr: 1, rationale: "FISH wykorzystuje komplementarność nici kwasów nukleoinowych — fluorescencyjna sonda wiąże się ze specyficznym locusem na chromosomie, pozwalając na wizualizację delecji lub translokacji pod mikroskopem." },
-            { q: "Profilaktyczne usunięcie całej tarczycy (tyreoidektomia) we wczesnym dzieciństwie jest standardem postępowania u pacjentów z potwierdzoną mutacją w genie:", opts: ["RET w przebiegu zespołu MEN2", "TP53 w przebiegu zespołu Li-Fraumeni", "NF1 w przebiegu neurofibromatozy", "FBN1 w przebiegu zespołu Marfana", "PAH w przebiegu fenyloketonurii"], corr: 0, rationale: "Z powodu niemal 100% penetracji raka rdzeniastego tarczycy w zespole MEN2, profilaktyczna operacja usunięcia narządu ratuje życie i jest wykonywana bardzo wcześnie." },
-            { q: "Objaw Gowersa (charakterystyczne 'wspinanie się po własnym ciele' przy wstawaniu z podłogi) wynika z osłabienia mięśni obręczy biodrowej i jest cechą:", opts: ["Dystrofii mięśniowej Duchenne'a", "Zespołu Marfana", "Zespołu Turnera", "Albinizmu", "Neurofibromatozy typu 1"], corr: 0, rationale: "Objaw ten świadczy o postępującym osłabieniu proksymalnych grup mięśniowych u chłopców dotkniętych DMD." },
-            { q: "Badania przesiewowe noworodków (screening noworodkowy) realizowane w Polsce z suchej kropli krwi obejmują obowiązkowo:", opts: ["fenyloketonurię, mukowiscydozę, wrodzoną niedoczynność tarczycy oraz SMA", "wyłącznie fenyloketonurię", "zespół Downa i zespół Edwardsa", "chorobę Huntingtona i zespół Marfana", "żadne z powyższych schorzeń"], corr: 0, rationale: "Polski panel przesiewowy obejmuje obecnie m.in. PKU, mukowiscydozę, hipotyreozę oraz od niedawna rdzeniowy zanik mięśni (SMA)." },
-            { q: "Która z aberracji chromosomowych charakteryzuje się obecnością holoprozencefalii, ciężkich rozszczepów pośrodkowych twarzy oraz polidaktylii?", opts: ["Trisomia 13 (Zespół Pataua)", "Trisomia 18 (Zespół Edwardsa)", "Trisomia 21 (Zespół Downa)", "Monosomia X (Zespół Turnera)", "Kariotyp 47,XXY"], corr: 0, rationale: "Trisomia 13 daje najcięższe wady pośrodkowe OUN i twarzoczaszki ze wszystkich aneuploidii żywourodzonych." },
-            { q: "Które białko komórkowe jest nazywane 'strażnikiem genomu' ze względu na swoją kluczową rolę w indukcji zatrzymania cyklu komórkowego lub apoptozy po uszkodzeniu DNA?", opts: ["Białko p53 (kodowane przez TP53)", "Białko RB (kodowane przez RB1)", "Dystrofina", "Fibrylina-1", "Huntingtyna"], corr: 0, rationale: "Białko p53 to kluczowy czynnik supresorowy kontrolujący stabilność genomu. Jego brak predysponuje do zespołu Li-Fraumeni." },
-            { q: "W zespole Turnera (45,X) struktura jajników ulega zanikowi, w wyniku czego w badaniu histopatologicznym lub USG przybierają one postać:", opts: ["jajników pasmowatej tkanki łącznej (jajniki pasmowate)", "wielotorbielowatych struktur (PCOS)", "olbrzymich potworniaków", "prawidłowych struktur bogatych w pęcherzyki Graafa", "całkowitego braku jakichkolwiek struktur w miednicy"], corr: 0, rationale: "Przyspieszona atrezja oocytów u płodów z zespołem Turnera prowadzi do zastąpienia prawidłowej kory jajnika łącznotkankowym pasmem (streak ovaries)." },
-            { q: "Zespół Aperta oraz zespół Crouzona należą do grup kraniosynostoz i są wywołane mutacjami w genach kodujących:", opts: ["receptory dla czynnika wzrostu fibroblastów (FGFR1, FGFR2, FGFR3)", "łańcuchy alfa kolagenu typu I", "ligazę ubikwityny", "enzymy lizosomalne", "białka kanałów chlorkowych"], corr: 0, rationale: "Mutacje FGFR powodują nadmierną, konstytutywną aktywację sygnału dla osteogenezy, wywołując przedwczesne fuzje szwów czaszkowych." },
-            { q: "Główny patomechanizm rozwoju objawów w alkaptonurii opiera się na gromadzeniu i odkładaniu się w tkankach łącznych:", opts: ["kwasu homogentyzynowego (HGA)", "fenyloalaniny", "tyrozyny", "miedzi", "glikogenu"], corr: 0, rationale: "Brak oksydazy homogentyzynowej hamuje metabolizm tyrozyny, wywołując akumulację HGA, który polimeryzuje w tkankach w procesie ochronozy." },
-            { q: "Oligonukleotydy antysensowne (ASO) wprowadzane do organizmu działają bezpośrednio na poziomie:", opts: ["kwasów nukleoinowych (mRNA / pre-mRNA)", "dojrzałych struktur białkowych w cytoplazmie", "receptorów błonowych", "enzymów mitochondrialnych", "błony komórkowej niszcząc ją"], corr: 0, rationale: "ASO to krótkie sekwencje kwasów nukleoinowych projektowane tak, by wiązały się z docelowym RNA, modyfikując jego translację lub splicing." },
-            { q: "Wektorami wirusowymi najczęściej stosowanymi w nowoczesnych terapiach genowych in vivo (np. Luxturna, Zolgensma) ze względu na ich bezpieczeństwo i wysokie powinowactwo do komórek postmitotycznych są:", opts: ["wirusy adeno-towarzyszące (AAV)", "dzikie wirusy HIV", "wirusy grypy typu A", "bakteriofagi T4", "wirusy zapalenia wątroby typu B"], corr: 0, rationale: "Wektory AAV (Adeno-Associated Virus) są bezpieczne, nie integrują masowo z genomem gospodarza i długo utrzymują ekspresję w komórkach takich jak neurony czy fotoreceptory." ]
+            { q: "Gen FBN1 zlokalizowany na chromosomie 15q21.1 koduje:", opts: ["fibrylinę-1", "dystrofinę", "huntingtynę", "tyrozynazę", "neurofibrominę"], corr: 0, rationale: "Mutacje genu fibryliny-1 (FBN1) upośledzą strukturę mikrofibryl tkanki łącznej, prowadząc do zespołu Marfana." },
+            { q: "Ryzyko powtórzenia się choroby uwarunkowanej wieloczynnikowo w danej rodzinie:", opts: ["jest zawsze stałe i wynosi 25%", "jest stałe i wynosi 50%", "wzrasta, jeśli większa liczba członków rodziny jest dotkniętaa chorobą", "maleje wraz z wiekiem rodziców", "wynika wyłącznie z mutacji w linii mitochondrialnej"], corr: 2, rationale: "W dziedziczeniu wieloczynnikowym (wielogenowym + środowiskowym) empiryczne ryzyko nawrotu rośnie wraz z liczbą chorych krewnych oraz ciężkością ich fenotypu." },
+            { q: "Które z poniższych wskazań NIE JEST klasycznym powodem do wykonania inwazyjnej diagnostyki prenatalnej (np. amniopunkcji)?", opts: ["wiek matki powyżej 35 lat", "urodzenie w poprzedniej ciąży dziecka z aberracją chromosomową", "nieprawidłowy wynik nieinwazyjnego przesiewowego testu prenatalnego (np. NIPT)", "rodzinne występowanie choroby genetycznej możliwej do zdiagnozowania prenatalnie", "pierwsza prawidłowa ciąża u kobiety w wieku 23 lat bez obciążeń w wywiadzie"], corr: 4, rationale: "Młody wiek matki bez obciążeń nie stanowi kryterium do inwazyjnych procedur wiążących się z ryzykiem utraty ciąży." },
+            { q: "Metoda aCGH (porównawcza hybrydyzacja genomowa do mikromacierzy) pozwala na wykrycie:", opts: ["zrównoważonych translokacji chromosomowych", "submikroskopowych zmian ilościowych DNA (CNV - delecji/duplikacji)", "inwersji pericentrycznych bez utraty materiału", "punktowych mutacji typu missense w pojedynczych genach", "polimorfizmów długości fragmentów restrykcyjnych"], corr: 1, rationale: "aCGH doskonale wykrywa submikroskopowe delecje i duplikacje (CNV), ale nie identyfikuje aberracji strukturalnie zrównoważonych ani mutacji punktowych." },
+            { q: "Zgrupowania barwnika w dnie oka przypominające ciałka kostne oraz postępujące zwężenie pola widzenia aż do stadium widzenia tunelowego to obraz:", opts: ["Zwyrodnienia barwnikowego siatkówki (Retinitis Pigmentosa)", "Glejaka nerwu wzrokowego", "Zwichnięcia soczewki", "Zaćmy wrodzonej", "Bielactwa oczno-skórnego"], corr: 0, rationale: "Są to klasyczne objawy Retinitis Pigmentosa wywołane pierwotną degeneracją pręcików." },
+            { q: "Wskaż gen ulegający mutacji we wrodzonej ślepote Lebera, odpowiedzialny za prawidłowy metabolizm witaminy A w siatkówce:", opts: ["RPE65", "HTT", "PAH", "RET", "WT1"], corr: 0, rationale: "Gen RPE65 koduje izomerylohydrolazę zaangażowaną w regenerację 11-cis-retinalu w cyklu wzrokowym." },
+            { q: "W zespole Edwardsa (trisomia 18) charakterystyczną cechą wyglądu stóp noworodka jest:", opts: ["bruzda sandałowa", "polidaktylia pozaosiowa", "stopy o zaokrąglonej podeszwie (stopy kołyskowe)", "syndaktylia III i IV palca", "wrodzony brak stóp"], corr: 2, rationale: "Stopy kołyskowe to patognomoniczny element fenotypowy u noworodków z trisomią 18." },
+            { q: "Nieleczona fenyloketonuria charakteryzuje się niepełnosprawnością intelektualną oraz specyficznym zapachem moczu, opisywanym jako zapach:", opts: ["mysi", "zgniłych jabłek", "syropu klonowego", "spalonej gumy", "świeżego pieczywa"], corr: 0, rationale: "Mysi zapach moczu i potu wynika z akumulacji kwasu fenylooctowego w ustroju." },
+            { q: "Główną przyczyną zespołu Angelmana jest utrata funkcji matczynej kopii regionu 15q11-q13. Najczęstszym mechanizmem molekularnym (ok. 70% przypadków) jest:", opts: ["jednorodzicielska disomia ojcowska (UPD)", "delecja fragmentu chromosomu pochodzenia matczynego", "mutacja punktowa w genie SNRPN", "izochromosom matczyny", "translokacja robertsonowska"], corr: 1, rationale: "Delecja matczyna usuwa krytyczny allel UBE3A, co wywołuje fenotyp zespołu Angelmana." },
+            { q: "Który z wymienionych zespołów klinicznych wiąże się ze skrajnie podwyższonym ryzykiem rozwoju nowotworów zarodkowych, zwłaszcza guza Wilmsa oraz hepatoblastoma w dzieciństwie?", opts: ["Zespół Beckwitha-Wiedemanna", "Zespół Turnera", "Zespół DiGeorge'a", "Alkaptonuria", "Choroba Huntingtona"], corr: 0, rationale: "BWS to zespół nadmiernego wzrostu predysponujący do nephroblastoma i hepatoblastoma wskutek nadekspresji IGF2." },
+            { q: "Technika FISH (Fluorescent In Situ Hybridization) opiera się bezpośrednio na zjawisku:", opts: ["amplifikacji enzymatycznej DNA", "hybrydyzacji znakowanych sond fluorescencyjnych z komplementarną sekwencją kwasu nukleoinowego", "rozdziału elektroforetycznego białek", "pomiaru natężenia światła rozproszonego", "centryfugowania gradientowego"], corr: 1, rationale: "FISH wykorzystuje wiązanie znakowanych sond jednoniciowych z komplementarnym DNA jądrowym pacjenta." },
+            { q: "Profilaktyczne usunięcie całej tarczycy (tyreoidektomia) we wczesnym dzieciństwie jest standardem postępowania u pacjentów z potwierdzoną mutacją w genie:", opts: ["RET w przebiegu zespołu MEN2", "TP53 w przebiegu zespołu Li-Fraumeni", "NF1 w przebiegu neurofibromatozy", "FBN1 w przebiegu zespołu Marfana", "PAH w przebiegu fenyloketonurii"], corr: 0, rationale: "W MEN2 mutacje RET dają niemal 100% penetrację raka rdzeniastego tarczycy, co wymaga prewencyjnego wycięcia narządu." },
+            { q: "Objaw Gowersa (charakterystyczne 'wspinanie się po własnym ciele' przy wstawaniu z podłogi) wynika z osłabienia mięśni obręczy biodrowej i jest cechą:", opts: ["Dystrofii mięśniowa Duchenne'a", "Zespołu Marfana", "Zespołu Turnera", "Albinizmu", "Neurofibromatozy typu 1"], corr: 0, rationale: "Osłabienie mięśni obręczy biodrowej wywołuje objaw Gowersa u chłopców chorych na DMD." },
+            { q: "Badania przesiewowe noworodków (screening noworodkowy) realizowane w Polsce z suchej kropli krwi obejmują obowiązkowo:", opts: ["fenyloketonurię, mukowiscydozę, wrodzoną niedoczynność tarczycy oraz SMA", "wyłącznie fenyloketonurię", "zespół Downa i zespół Edwardsa", "chorobę Huntingtona i zespół Marfana", "żadne z powyższych schorzeń"], corr: 0, rationale: "Program przesiewowy w Polsce obligatoryjnie obejmuje m.in. PKU, CF, niedoczynność tarczycy i SMA." },
+            { q: "Która z aberracji chromosomowych charakteryzuje się obecnością holoprozencefalii, ciężkich rozszczepów pośrodkowych twarzy oraz polidaktylii?", opts: ["Trisomia 13 (Zespół Pataua)", "Trisomia 18 (Zespół Edwardsa)", "Trisomia 21 (Zespół Downa)", "Monosomia X (Zespół Turnera)", "Kariotyp 47,XXY"], corr: 0, rationale: "Trisomia 13 (zespół Pataua) daje ciężkie pośrodkowe wady strukturalne." },
+            { q: "Które białko komórkowe jest nazywane 'strażnikiem genomu' ze względu na swoją kluczową rolę w indukcji zatrzymania cyklu komórkowego lub apoptozy po uszkodzeniu DNA?", opts: ["Białko p53 (kodowane przez TP53)", "Białko RB (kodowane przez RB1)", "Dystrofina", "Fibrylina-1", "Huntingtyna"], corr: 0, rationale: "Białko p53 indukuje zatrzymanie cyklu lub apoptozę w przypadku nienaprawialnych uszkodzeń genomu." },
+            { q: "W zespole Turnera (45,X) struktura jajników ulega zanikowi, w wyniku czego w badaniu histopatologicznym lub USG przybierają one postać:", opts: ["jajników pasmowatej tkanki łącznej (jajniki pasmowate)", "wielotorbielowatych struktur (PCOS)", "olbrzymich potworniaków", "prawidłowych struktur bogatych w pęcherzyki Graafa", "całkowitego braku jakichkolwiek struktur w miednicy"], corr: 0, rationale: "Przyspieszona atrezja oocytów u płodów 45,X prowadzi do wykształcenia jajników pasmowatych." },
+            { q: "Zespół Aperta oraz zespół Crouzona należą do grup kraniosynostoz i są wywołane mutacjami w genach kodujących:", opts: ["receptory dla czynnika wzrostu fibroblastów (FGFR1, FGFR2, FGFR3)", "łańcuchy alfa kolagenu typu I", "ligazę ubikwityny", "enzymy lizosomalne", "białka kanałów chlorkowych"], corr: 0, rationale: "Mutacje FGFR powodują przedwczesne, patologiczne kostnienie szwów czaszkowych." },
+            { q: "Główny patomechanizm rozwoju objawów w alkaptonurii opiera się na gromadzeniu i odkładaniu się w tkankach łącznych:", opts: ["kwasu homogentyzynowego (HGA)", "fenyloalaniny", "tyrozyny", "miedzi", "glikogenu"], corr: 0, rationale: "Akumulacja HGA polimeryzuje w tkankach, niszcząc chrząstki i wywołując ochrozę." },
+            { q: "Oligonukleotydy antysensowne (ASO) wprowadzane do organizmu działają bezpośrednio na poziomie:", opts: ["kwasów nukleoinowych (mRNA / pre-mRNA)", "dojrzałych struktur białkowych w cytoplazmie", "receptorów błonowych", "enzymów mitochondrialnych", "błony komórkowej niszcząc ją"], corr: 0, rationale: "ASO celują w pre-mRNA lub mRNA, modyfikując procesy splicingu lub translacji komórkowej." },
+            { q: "Wektorami wirusowymi najczęściej stosowanymi w nowoczesnych terapiach genowych in vivo (np. Luxturna, Zolgensma) ze względu na ich bezpieczeństwo i wysokie powinowactwo do komórek postmitotycznych są:", opts: ["wirusy adeno-towarzyszące (AAV)", "dzikie wirusy HIV", "wirusy grypy typu A", "bakteriofagi T4", "wirusy zapalenia wątroby typu B"], corr: 0, rationale: "Wektory AAV (np. AAV9 w Zolgensma, AAV2 w Luxturna) są standardem terapii in vivo ze względu na profil bezpieczeństwa." },
+            { q: "Heteroplazmia to zjawisko definicyjnie związane z obecnością:", opts: ["różnych linii komórkowych w mozaicyzmie somatycznym", "mutacji dynamicznych w kolejnych pokoleniach", "współistnienia prawidłowych i zmutowanych cząsteczek mtDNA w komórce", "translokacji zrównoważonej", "aberracji strukturalnej chromosomu 22"], corr: 2, rationale: "Heteroplazmia definiuje obecność mieszaniny prawidłowego i zmutowanego DNA mitochondrialnego w organellach komórki." },
+            { q: "Gen FMR1 zlokalizowany na chromosomie X, w którym dochodzi do ekspansji powtórzeń tripletów CGG, koduje białko FMRP zaangażowane w:", opts: ["plastyczność synaptyczną i transport mRNA w neuronach", " steroidogenezę nadnerczową", "naprawę błędów polimerazy DNA", "splicing alternatywny genu SMN2", "skurcz włókien dystroficznych"], corr: 0, rationale: "Białko FMRP reguluje translację i transport mRNA w synapsach; jego brak wywołuje zespół łamliwego chromosomu X." },
+            { q: "Pojęcie 'plejotropia' w genetyce klinicznej oznacza:", opts: ["wywołanie choroby przez mutacje w wielu różnych genach", "warunkowanie przez pojedynczy wariant genetyczny wielu pozornie niepowiązanych cech w różnych układach narządowych", "niepełną penetrację genu uwarunkowaną wiekiem pacjenta", "obecność ciałka Barra u mężczyzn", "losowy podział mitochondriów podczas mejozy"], corr: 1, rationale: "Plejotropia zachodzi, gdy mutacja jednego genu daje objawy w wielu tkankach (np. gen FBN1 wpływa na oko, kościec i aortę)." },
+            { q: "Wrodzony Przerost Nadnerczy (CAH) o kariotypie 46,XX manifestuje się u noworodków żeńskich poprzez:", opts: ["całkowity brak macicy i jajowodów przy żeńskich narządach zewnętrznych", "wirylizację i maskulinizację zewnętrznych narządów płciowych przy prawidłowej macicy i jajnikach", "obecność jąder w kanale pachwinowym", "czystą dysgenezję gonad pasmowatych", "wrodzony brak nerek"], corr: 1, rationale: "Nadmiar androgenów w CAH wywołuje wirylizację narządów zewnętrznych u dziewczynek, ale struktury wewnętrzne (Müllera) rozwijają się prawidłowo." },
+            { q: "W zespole Morrisa (CAIS - Całkowita Niewrażliwość na Androgeny) o kariotypie 46,XY cechą patognomoniczną jest:", opts: ["żeński fenotyp zewnętrzny, ślepo zakończona pochwa oraz całkowity brak macicy i jajowodów", "prawidłowo rozwinięta macica i jajowody przy męskich narządach zewnętrznych", "obecność jajników pasmowatych", "ciężkie upośledzenie umysłowe połączone z hiperfagią", "mocz ciemniejący na powietrzu"], corr: 0, rationale: "Z powodu braku funkcjonalnego receptora AR, testosteron nie działa na narządy zewnętrzne (fenotyp żeński), a wydzielany przez jądra AMH powoduje inwolucję macicy i jajowodów." }
         ];
 
-        // --- FLASHCARDS GENERATOR ---
+        // --- FLASHCARDS LOGIC ---
         let flashcardsData = [];
         let currentCardIndex = 0;
 
         function compileDynamicFlashcards() {
-            // Generujemy fiszki automatycznie z tabeli matrix i kart merytorycznych
             flashcardsData = [
                 { q: "Jaka wada serca jest absolutnym pewniakiem egzaminacyjnym w zespole Downa?", a: "Wspólny kanał przedsionkowo-komorowy (<strong>AVSD</strong>)." },
                 { q: "Który gen na chromosomie 21 odpowiada za wczesną chorobę Alzheimera u pacjentów z zespołem Downa?", a: "Gen <strong>APP</strong> (białka prekursorowego amyloidu)." },
@@ -904,13 +793,8 @@
             updateFlashcardUI();
         }
 
-        // --- SIMULATOR EXAM SYSTEM ---
-        let examState = {
-            currentIndex: 0,
-            correctCount: 0,
-            failedCount: 0,
-            answered: false
-        };
+        // --- EXAM SYSTEM ---
+        let examState = { currentIndex: 0, correctCount: 0, failedCount: 0, answered: false };
 
         function compileExamSystem() {
             renderQuestion();
@@ -959,11 +843,10 @@
             }
 
             const ratBox = document.getElementById('examRationaleBox');
-            ratBox.innerHTML = `<strong>Komentarz Kliniczny (High-Yield):</strong> ${qData.rationale}`;
+            ratBox.innerHTML = `<strong>Komentarz Kliniczny:</strong> ${qData.rationale}`;
             ratBox.style.display = "block";
 
             document.getElementById('nextQuestionBtn').style.display = "block";
-            document.getElementById('remainingCount').innerText = examQuestionsBaza.length - (examState.correctCount + examState.failedCount);
         }
 
         function nextQuestion() {
@@ -978,17 +861,14 @@
             renderQuestion();
         }
 
-        // --- MINI ASYSTENT AI WIDGET LOGIC ---
+        // --- CHAT AI ASSISTANT ---
         function toggleAIChat() {
             const win = document.getElementById('ai-chat-window');
-            const btn = document.getElementById('ai-toggle-btn');
             if(win.style.display === 'none' || win.style.display === '') {
                 win.style.display = 'flex';
-                btn.style.transform = 'rotate(180deg)';
                 document.getElementById('ai-user-input').focus();
             } else {
                 win.style.display = 'none';
-                btn.style.transform = 'rotate(0deg)';
             }
         }
 
@@ -1011,34 +891,27 @@
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
             setTimeout(() => {
-                let reply = "";
-                let matchesQuestions = [];
+                let reply = "Nie znalazłem jednoznacznej odpowiedzi w słowniku szybkiego reagowania. Użyj wyszukiwarki głównej na pasku bocznym, aby przeszukać cały tekst skryptu i tabele merytoryczne!";
                 
-                if (typeof examQuestionsBaza !== 'undefined') {
-                    matchesQuestions = examQuestionsBaza.filter(item => 
-                        item.q.toLowerCase().includes(query) || 
-                        item.rationale.toLowerCase().includes(query) ||
-                        item.opts.some(o => o.toLowerCase().includes(query))
-                    );
-                }
+                let matchesQuestions = examQuestionsBaza.filter(item => 
+                    item.q.toLowerCase().includes(query) || item.rationale.toLowerCase().includes(query)
+                );
 
-                if(query.includes("zolgensma") || query.includes("onasemnogen")) {
-                    reply = "<strong>Terapia Zolgensma (SMA):</strong> Jednorazowy wlew dożylny wykorzystujący wektor <strong>AAV9</strong> z cDNA genu <strong>SMN1</strong>. Główny skutek uboczny: <strong>bezobjawowa hipertransaminazemia</strong> (wzrost ALAT/ASPAT). <strong>Pamiętaj:</strong> W trakcie sterydoterapii pacjent ma zakaz przyjmowania szczepionek żywych! Szczepionki zabite można podawać.";
-                } else if(query.includes("luxturna") || query.includes("lca") || query.includes("leber")) {
-                    reply = "<strong>Terapia Luxturna (LCA - Wrodzona Ślepota Lebera):</strong> Podsiatkówkowa terapia celowana wektorem <strong>AAV2</strong> u pacjentów z mutacją genu <strong>RPE65</strong>. Przywraca metabolizm witaminy A. Objaw Franceschettiego (pocieranie gałek ocznych) oraz wygaszone badanie ERG to kluczowe markery diagnostyczne tej patologii.";
-                } else if(query.includes("nusinersen") || query.includes("spinraza") || query.includes("aso")) {
-                    reply = "<strong>Nusinersen (Spinraza):</strong> Oligonukleotyd antysensowny (ASO) podawany dokanałowo. Modyfikuje splicing pre-mRNA genu zapasowego <strong>SMN2</strong>, wymuszając włączenie (inclusion) <strong>eksonu 7</strong>, co skutkuje powstaniem funkcjonalnego, stabilnego białka SMN.";
-                } else if(query.includes("wes") || query.includes("sekwencjonowanie")) {
-                    reply = "<strong>Sekwencjonowanie całoeksomowe (WES):</strong> Analizuje sekwencje kodujące (eksony). <strong>Ważne na egzamin:</strong> WES NIE wykryje mutacji dynamicznej (np. ekspansji tripletów w chorobie Huntingtona), dużej delecji, ani rearanżacji strukturalnych (np. subtelomerowych).";
+                if(query.includes("zolgensma") || query.includes("szczepien")) {
+                    reply = "<strong>Terapia Zolgensma (SMA):</strong> Jednorazowy wlew dożylny (wektor AAV9 z cDNA genu SMN1). Powikłanie: bezobjawowa <strong>hipertransaminazemia</strong> (wzrost ALT/AST). <strong>Ważne na test:</strong> W trakcie sterydoterapii osłonowej pacjent ma całkowity zakaz szczepień żywych! Szczepionki zabite można stosować.";
+                } else if(query.includes("luxturna") || query.includes("lca") || query.includes("franceschett")) {
+                    reply = "<strong>Luxturna (Wrodzona Ślepota Lebera):</strong> Celowana terapia genowa in vivo wektorem AAV2 dla pacjentów z mutacją genu <strong>RPE65</strong>. Objawy: ślepota od urodzenia, brak odruchów źrenic, wygaszone ERG oraz patognomoniczny objaw Franceschettiego (pocieranie oczu pięściami).";
+                } else if(query.includes("spinraza") || query.includes("nusinersen") || query.includes("smn2")) {
+                    reply = "<strong>Nusinersen (Spinraza):</strong> Oligonukleotyd antysensowny (ASO) podawany dokanałowo. Modyfikuje splicing pre-mRNA genu zapasowego <strong>SMN2</strong>, powodując <strong>włączenie eksonu 7</strong> do transkryptu.";
                 } else if(query.includes("huntington") || query.includes("cag")) {
-                    reply = "<strong>Choroba Huntingtona (HD):</strong> Dziedziczenie autosomalne dominujące (AD), mutacja dynamiczna w genie <strong>HTT</strong> polegająca na ekspansji powtórzeń tripletów <strong>CAG (&gt;36)</strong>. Charakteryzuje się pełną penetracją, zjawiskiem antycypacji (zwłaszcza w linii ojcowskiej) oraz triadą: ruchy pląsawicze, otępienie i zaburzenia psychiatryczne.";
-                } else if(query.includes("retinitis") || query.includes("barwnikowe") || query.includes("erg")) {
-                    reply = "<strong>Retinitis Pigmentosa (Zwyrodnienie Barwnikowe Siatkówki):</strong> Wybitna heterogenność dziedziczenia (AD, AR, XR), często mutacja genu rodopsyny (<strong>RHO</strong>). Triada objawów: ślepota zmierzchowa, widzenie tunelowe i złogi ciałek kostnych w dnie oka. W badaniu <strong>ERG</strong> stwierdza się całkowity brak odpowiedzi.";
+                    reply = "<strong>Choroba Huntingtona (HD):</strong> Dziedziczenie AD, mutacja dynamiczna (ekspansja powtórzeń <strong>CAG &gt;36</strong> w genie HTT). Triada: ruchy pląsawicze, otępienie, zaburzenia psychiatryczne. Wykazuje silną antycypację przy przekazywaniu w linii ojcowskiej.";
+                } else if(query.includes("retinitis") || query.includes("barwnikowe") || query.includes("kostne")) {
+                    reply = "<strong>Retinitis Pigmentosa (Zwyrodnienie Barwnikowe Siatkówki):</strong> Wybitna heterogenność (AD, AR, XR), mutacje m.in. w genie rodopsyny (RHO). Pierwszy objaw to <strong>ślepota zmierzchowa</strong>, potem widzenie tunelowe i <strong>złogi ciałek kostnych</strong> w dnie oka. ERG jest całkowicie wygaszone.";
+                } else if(query.includes("wes")) {
+                    reply = "<strong>Sekwencjonowanie całoeksomowe (WES):</strong> Analizuje eksony kodujące. <strong>Pewniak na test:</strong> WES nie wykryje mutacji dynamicznej (np. Huntingtona), dużych delecji strukturalnych ani zmian liczby kopii eksonów (do tego służy MLPA).";
                 } else if(matchesQuestions.length > 0) {
-                    let qMatch = matchesQuestions[0];
-                    reply = `Znaleziono pasujące pytanie egzaminacyjne:<br><br><strong>Pytanie:</strong> ${qMatch.q}<br><br><strong>Prawidłowa odpowiedź:</strong> ${qMatch.opts[qMatch.corr]}<br><br><strong>Komentarz / Rationale:</strong> ${qMatch.rationale}`;
-                } else {
-                    reply = "Nie znalazłem precyzyjnego pytania testowego, ale spróbuj użyć wyszukiwarki globalnej na górze strony skryptu, wpisując tę frazę, aby podświetlić wszystkie karty wiedzy i rekordy tabel powiązane z tym zagadnieniem!";
+                    let m = matchesQuestions[0];
+                    reply = `Znaleziono powiązane pytanie z bazy:<br><br><strong>Q:</strong> ${m.q}<br><br><strong>Opcje:</strong> ${m.opts.join(', ')}<br><br><strong>Prawidłowa:</strong> ${m.opts[m.corr]}<br><br><strong>Rationale:</strong> ${m.rationale}`;
                 }
 
                 const botDiv = document.createElement('div');
@@ -1046,7 +919,7 @@
                 botDiv.innerHTML = reply;
                 messagesContainer.appendChild(botDiv);
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }, 400);
+            }, 300);
         }
 
         window.onload = function() {
