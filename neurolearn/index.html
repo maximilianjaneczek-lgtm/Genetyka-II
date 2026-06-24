@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lokalne narzędzie do nauki neurologii na podstawie skryptu Natalii Rachfalskiej."
+    />
+    <title>NeuroLearn</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" data-view-link="start" aria-label="NeuroLearn - strona główna">
+          <span class="brand-mark" aria-hidden="true">N</span>
+          <span>
+            <strong>NeuroLearn</strong>
+            <small>Twój skrypt. W ruchu.</small>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Główna nawigacja">
+          <button class="nav-item is-active" data-view="start">
+            <span class="nav-icon">⌂</span><span>Start</span>
+          </button>
+          <button class="nav-item" data-view="topics">
+            <span class="nav-icon">◫</span><span>Tematy i choroby</span>
+          </button>
+          <button class="nav-item" data-view="drugs">
+            <span class="nav-icon">✦</span><span>Leki</span>
+          </button>
+          <button class="nav-item" data-view="diagnostics">
+            <span class="nav-icon">⌁</span><span>Diagnostyka</span>
+          </button>
+          <button class="nav-item" data-view="flashcards">
+            <span class="nav-icon">✓</span><span>Testy egzaminacyjne</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-progress">
+          <div class="eyebrow">Twój wynik</div>
+          <div class="progress-ring" id="sidebar-progress-ring">
+            <span id="sidebar-progress-value">0%</span>
+          </div>
+          <p id="sidebar-progress-copy">Rozwiąż pierwsze pytanie, żeby rozpocząć.</p>
+        </div>
+
+        <div class="source-note">
+          <span class="source-dot"></span>
+          <span>Źródła: skrypt 2020 + egzaminy 2026</span>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="mobile-brand">
+            <span class="brand-mark">N</span>
+            <strong>NeuroLearn</strong>
+          </div>
+          <label class="global-search">
+            <span aria-hidden="true">⌕</span>
+            <input
+              id="global-search"
+              type="search"
+              placeholder="Szukaj choroby, leku, objawu lub badania..."
+              autocomplete="off"
+            />
+            <kbd>/</kbd>
+          </label>
+          <button class="study-now" data-view="flashcards">Rozwiąż test <span>→</span></button>
+        </header>
+
+        <div class="content" id="content" aria-live="polite"></div>
+      </main>
+    </div>
+
+    <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+    <aside class="detail-drawer" id="detail-drawer" aria-hidden="true" aria-label="Szczegóły">
+      <button class="drawer-close" id="drawer-close" aria-label="Zamknij">×</button>
+      <div id="drawer-content"></div>
+    </aside>
+
+    <script src="data/neurologia-data.js"></script>
+    <script src="data/exams-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
